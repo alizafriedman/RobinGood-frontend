@@ -6,6 +6,7 @@ import NavBar from "./components/NavBar";
 import ExternalApi from "./views/ExternalApi";
 
 import Home from './components/Home'
+import Profile from './components/Profile'
 
 import "./styles/index.css";
 import history from "./utils/history";
@@ -23,11 +24,10 @@ function App() {
           </header>
           <Switch>
             <Route path="/" exact component={Home} />
+            <PrivateRoute path="/profile" component={Profile} />
             <PrivateRoute path="/external-api" component={ExternalApi} />
-            
           </Switch>
-          <footer>
-          </footer>
+          <footer></footer>
         </Router>
       </div>
     </ThemeProvider>

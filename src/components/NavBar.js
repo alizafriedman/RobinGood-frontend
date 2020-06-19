@@ -73,7 +73,7 @@ const NavBar = () => {
     <div className={classes.root}>
       <AppBar
         className={classes.appBar}
-        style={{ backgroundColor: "#000a12" }}
+        style={{ backgroundColor: "white" }}
         position="fixed"
       >
         <Toolbar disableGutters={true} style={{ paddingRight: "10px" }}>
