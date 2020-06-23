@@ -1,5 +1,6 @@
 // import * as React from "react";
 import React from "react";
+import "../styles/graph.css";
 import Paper from "@material-ui/core/Paper";
 import {
   Chart,
@@ -8,28 +9,37 @@ import {
   ArgumentAxis,
   ValueAxis,
 } from "@devexpress/dx-react-chart-material-ui";
-
+import { Palette } from "@devexpress/dx-react-chart";
 import { Animation } from "@devexpress/dx-react-chart";
+import InfoIcon from "@material-ui/icons/Info";
+import CharityInfo from './CharityInfo'
+// import { Legend } from "@devexpress/dx-react-chart";
 
-const Graph = (props) => {
+const Graph = ({ data, title }) => {
    
 
-if (!props.data) return null
+if (!data) return null
         
     return (
+      <Paper className="graph">
+        {/* <InfoIcon /> */}
+        <Chart data={data} className="chart" width="750">
+          <ArgumentAxis />
+          <ValueAxis />
+          <BarSeries
+            valueField="y"
+            argumentField="x"
+            color="purple"
+            width="70"
+          />
 
-            <Paper>
-                <Chart data={props.data}>
-                    <ArgumentAxis />
-                    <ValueAxis />
+          <Title text={title} /> 
 
-                    <BarSeries valueField="y" argumentField="x" />
-                    <Title text={props.title} />
-                <Animation />
-                
-                </Chart>
-            </Paper>
-        );
+          <Animation />
+            </Chart>
+            <CharityInfo />
+      </Paper>
+    );
     
 
 }
