@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { useAuth0 } from "../react-auth0-spa";
 // import NavBarSearch from "./NavBarSearch";
 // import SideBarBrowse from "./SideBarBrowse";
-// import "../styles/navbar-styles.css";
+import "../styles/navbar.css";
 
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
@@ -15,7 +15,7 @@ import { makeStyles, fade } from "@material-ui/core/styles";
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
-    borderBottom: "1px solid #00897b",
+    // borderBottom: "1px solid #00897b",
   },
   appBar: {
     zIndex: theme.zIndex.drawer + 1,
@@ -80,16 +80,24 @@ const NavBar = () => {
           <Typography variant="h6" className={classes.title}>
             <div>
               <Link to="/" id="navbar-logo">
-                <Button style={{ color: "#00897b", fontSize: 20 }}>
+                <Button
+                  style={{
+                    color: "black",
+                    fontSize: 20,
+                    lineHeight: "28px",
+                    textDecoration: "none",
+                  }}
+                >
                   RobinGood
                 </Button>
+                {/* <img src="/utils/robinhoodLogo.png" className='logo' /> */}
               </Link>
             </div>
           </Typography>
 
           {!isAuthenticated && (
             <Button
-              style={{ color: "#e8eaf6" }}
+              style={{ color: "black" }}
               onClick={() => loginWithPopup({})}
             >
               Log in

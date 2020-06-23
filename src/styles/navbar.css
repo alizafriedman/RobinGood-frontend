@@ -1,0 +1,24 @@
+a:-webkit-any-link {
+  color: rgba(0, 0, 0, 0.87);
+  text-decoration: none;
+}
+
+.nav-button {
+  color: #e8eaf6;
+}
+.logo {
+    width: 36px;
+    height: 36px;
+    position: relative;
+    top: -14px;
+    left: 3px;
+}
+
+#navbar-logo {
+  display: flex;
+  align-items: center;
+  letter-spacing: 2px;
+  width: 130px;
+  color: #e8eaf6;
+}
+

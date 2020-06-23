@@ -7,6 +7,7 @@ import ExternalApi from "./views/ExternalApi";
 
 import Home from './components/Home'
 import Profile from './components/Profile'
+import theme from './components/Theme'
 
 import "./styles/index.css";
 import history from "./utils/history";
@@ -15,7 +16,7 @@ import { ThemeProvider } from "@material-ui/core/styles";
 
 function App() {
   return (
-    <ThemeProvider>
+    <ThemeProvider theme={theme}>
       <div className="App">
         {/* Don't forget to include the history module */}
         <Router history={history}>

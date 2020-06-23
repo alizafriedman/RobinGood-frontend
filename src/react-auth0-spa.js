@@ -18,9 +18,11 @@ export const Auth0Provider = ({
   const [loading, setLoading] = useState(true);
   const [popupOpen, setPopupOpen] = useState(false);
 
+
   useEffect(() => {
     const initAuth0 = async () => {
       const auth0FromHook = await createAuth0Client(initOptions);
+      console.log(auth0FromHook)
       setAuth0(auth0FromHook);
 
       if (
@@ -37,6 +39,7 @@ export const Auth0Provider = ({
 
       if (isAuthenticated) {
         const user = await auth0FromHook.getUser();
+        console.log(user)
         let token = await auth0FromHook.getTokenSilently();
         console.log(token)
         const res = await fetch(`${api}/users`, {
