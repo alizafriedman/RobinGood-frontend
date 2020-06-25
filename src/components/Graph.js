@@ -11,33 +11,31 @@ import {
 } from "@devexpress/dx-react-chart-material-ui";
 import { Palette } from "@devexpress/dx-react-chart";
 import { Animation } from "@devexpress/dx-react-chart";
-import InfoIcon from "@material-ui/icons/Info";
 import CharityInfo from './CharityInfo'
 // import { Legend } from "@devexpress/dx-react-chart";
 
-const Graph = ({ data, title }) => {
+const Graph = ({charity: { name, website, chart_data, donate_link, city, state, zip_code, category  }}) => {
    
 
-if (!data) return null
+if (!chart_data) return null
         
     return (
       <Paper className="graph">
-        {/* <InfoIcon /> */}
-        <Chart data={data} className="chart" width="750">
+        <Chart data={chart_data} className="chart" width="650">
           <ArgumentAxis />
           <ValueAxis />
           <BarSeries
             valueField="y"
             argumentField="x"
             color="purple"
-            width="70"
+                    barWidth="1"
           />
 
-          <Title text={title} /> 
+          <Title text={name} /> 
 
           <Animation />
             </Chart>
-            <CharityInfo />
+            <CharityInfo website={website} donate_link={donate_link} name={name} city={city} state={state} zip_code={zip_code} category={category} />
       </Paper>
     );
     

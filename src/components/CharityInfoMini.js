@@ -1,5 +1,5 @@
-import React, {useEffect, setState, useState} from "react";
-import {Link, NavLink} from 'react-router-dom'
+import React, { useEffect, setState, useState } from "react";
+import { Link, NavLink } from "react-router-dom";
 import { withStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
 import Dialog from "@material-ui/core/Dialog";
@@ -9,10 +9,9 @@ import MuiDialogActions from "@material-ui/core/DialogActions";
 import IconButton from "@material-ui/core/IconButton";
 import CloseIcon from "@material-ui/icons/Close";
 import Typography from "@material-ui/core/Typography";
-import { fetchCharity } from '../services/charities'
+import { fetchCharity } from "../services/charities";
 import { api } from "../config";
-import Home from './Home'
-
+import Home from "./Home";
 
 const styles = (theme) => ({
   root: {
@@ -58,10 +57,16 @@ const DialogActions = withStyles((theme) => ({
   },
 }))(MuiDialogActions);
 
-function CharityInfo( {donate_link, website, name, city, state, zip_code, category}) {
-    const [open, setOpen] = React.useState(false);
-;
-  
+function CharityInfoMini({
+  donate_link,
+  website,
+  name,
+  city,
+  state,
+  zip_code,
+  category,
+}) {
+  const [open, setOpen] = React.useState(false);
   const handleClickOpen = () => {
     setOpen(true);
   };
@@ -69,12 +74,10 @@ function CharityInfo( {donate_link, website, name, city, state, zip_code, catego
     setOpen(false);
   };
 
-
   const addCharity = () => {
     //add to display mini graph with matching ein on this page
-            window.location.href = '/profile';
-
-  }
+    window.location.href = "/profile";
+  };
   return (
     <div>
       <Button variant="outlined" color="primary" onClick={handleClickOpen}>
@@ -116,5 +119,4 @@ function CharityInfo( {donate_link, website, name, city, state, zip_code, catego
   );
 }
 
-
-export default CharityInfo;
+export default CharityInfoMini;

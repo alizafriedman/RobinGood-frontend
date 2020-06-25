@@ -4,6 +4,7 @@ import { useAuth0 } from "../react-auth0-spa";
 // import NavBarSearch from "./NavBarSearch";
 // import SideBarBrowse from "./SideBarBrowse";
 import "../styles/navbar.css";
+import SearchDialog from './SearchDialog'
 
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
@@ -68,6 +69,7 @@ const useStyles = makeStyles((theme) => ({
 const NavBar = () => {
   const classes = useStyles();
   const { isAuthenticated, loginWithPopup } = useAuth0();
+   const { logout } = useAuth0();
 
   return (
     <div className={classes.root}>
@@ -94,7 +96,7 @@ const NavBar = () => {
               </Link>
             </div>
           </Typography>
-
+<SearchDialog />
           {!isAuthenticated && (
             <Button
               style={{ color: "black" }}
@@ -119,11 +121,11 @@ const NavBar = () => {
               </Link>
             </span>
           )}
-          {/* {isAuthenticated && (
+          {isAuthenticated && (
             <Button style={{ color: "#e8eaf6" }} onClick={() => logout()}>
               Log out
             </Button>
-          )} */}
+          )}
         </Toolbar>
       </AppBar>
       <Toolbar />
