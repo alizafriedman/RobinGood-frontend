@@ -7,6 +7,7 @@ import DialogContent from "@material-ui/core/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import { api } from "../config";
+import FullPageCharity from './FullPageCharity'
 function SearchDialog() {
     const [open, setOpen] = React.useState(false);
     const [ein, setEin] = React.useState()
@@ -17,9 +18,16 @@ function SearchDialog() {
     setOpen(true);
   };
 
-  const handleClose = () => {
-    setOpen(false);
-  };
+ 
+    
+    const handleCloseTerm = () => {
+        setOpen(false)
+        //set Term function here
+    }
+
+    const handleClose = () => {
+        setOpen(false)
+    }
 
     const handleSearchTerm = async (e) => {
       setSearch(e.target.value);
@@ -29,7 +37,7 @@ function SearchDialog() {
       setEin(e.target.value);
     };
 
-   const fetchCharity = async () => {
+    const fetchCharity = async () => {
      const res = await fetch(`${api}/charities/${ein}`, {
        method: "GET",
        headers: {
@@ -39,14 +47,18 @@ function SearchDialog() {
      
      if (!res.ok) throw new Error("couldnt load featured data");
        const test = await res.json();
-       console.log(test)
-       setChar(test)
-       window.location.href = `/profile`;
+    //    console.log(test)
+        setChar(test)
    };
     
+    const handleCloseEin = () => {
+
+       setOpen(false);
+       fetchCharity();
+     };
   return (
     <div>
-      <Button variant="outlined" color="primary" onClick={handleClickOpen}>
+      <Button color="primary" onClick={handleClickOpen}>
         Search For A Charity
       </Button>
       <Dialog
@@ -54,12 +66,11 @@ function SearchDialog() {
         onClose={handleClose}
         aria-labelledby="form-dialog-title"
       >
-        <form onSubmit={fetchCharity}>
+        <form >
           <DialogTitle id="form-dialog-title">Search</DialogTitle>
           <DialogContent>
             <DialogContentText>
-              To subscribe to this website, please enter your email address
-              here. We will send updates occasionally.
+              To search for a charity, either enter its EIN or the name/term:
             </DialogContentText>
             <TextField
               autoFocus
@@ -68,7 +79,7 @@ function SearchDialog() {
               label="Search By Ein"
               type="search"
               fullWidth
-              //   value={setSearch}
+              value={ein}
               onChange={handleSearchEin}
             />
             <TextField
@@ -86,12 +97,16 @@ function SearchDialog() {
             <Button onClick={handleClose} color="primary">
               Cancel
             </Button>
-            <Button onClick={handleClose} color="primary">
-              Search
+            <Button onClick={handleCloseTerm} color="primary">
+              Search By Term
+            </Button>
+            <Button onClick={handleCloseEin} color="primary">
+              Search By Ein
             </Button>
           </DialogActions>
         </form>
       </Dialog>
+      {char && <FullPageCharity char={char} closeDialog={setChar} />}
     </div>
   );
 }

@@ -11,7 +11,7 @@ import "../styles/home.css";
 const Home = () => {
   const { user, loading, getTokenSilently, isAuthenticated } = useAuth0();
   const [charity, setCharity] = useState();
-  const[test, setTest] = useState()
+  
 
   
   useEffect(() => {
@@ -23,25 +23,8 @@ const Home = () => {
         console.error(error);
       }
     })();
-    //  (async () => {
-    //    try {
-    //      const regularCharity = await fetchCharity();
-    //      setTest(regularCharity);
-    //    } catch (error) {
-    //      console.error(error);
-    //    }
-    //  })();
   }, [loading]);
-  useEffect(() => {
-    (async () => {
-      try {
-        const regularCharity = await fetchCharity(590774235);
-        setTest(regularCharity);
-      } catch (error) {
-        console.error(error);
-      }
-    })();
-  }, [])
+ 
   
  
   if (!charity) return null;
@@ -59,11 +42,12 @@ const Home = () => {
           url={charity.website}
           charity={charity}
         />
+        
         <MiniGraph
-          title={test.name}
-          data={test.chart_data}
-          url={test.website}
-          charity={test}
+          title={charity.name}
+          data={charity.chart_data}
+          url={charity.website}
+          charity={charity}
         />
       </div>
     </>

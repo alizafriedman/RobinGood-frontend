@@ -12,6 +12,7 @@ import Typography from "@material-ui/core/Typography";
 import { fetchCharity } from "../services/charities";
 import { api } from "../config";
 import Home from "./Home";
+import { useAuth0 } from "../react-auth0-spa";
 
 const styles = (theme) => ({
   root: {
@@ -64,9 +65,11 @@ function CharityInfoMini({
   city,
   state,
   zip_code,
-  category,
+    category,
+  ein
 }) {
-  const [open, setOpen] = React.useState(false);
+    const [open, setOpen] = React.useState(false);
+    const { user, getTokenSilently } = useAuth0();
   const handleClickOpen = () => {
     setOpen(true);
   };
@@ -74,9 +77,22 @@ function CharityInfoMini({
     setOpen(false);
   };
 
-  const addCharity = () => {
-    //add to display mini graph with matching ein on this page
-    window.location.href = "/profile";
+    
+    const addCharity = async () => {
+        if (user) {
+            const token = await getTokenSilently();
+            const res = await fetch(`${api}/users/${user.id}`, {
+                method: "PATCH",
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    charity_id: ein
+                }),
+            });
+            if (!res.ok) throw res;
+        }
   };
   return (
     <div>

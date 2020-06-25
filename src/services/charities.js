@@ -9,7 +9,7 @@ export const fetchFeaturedCharity = async () => {
       "Content-Type": "application/json",
     },
   });
-    console.log(res)
+    // console.log(res)
     if (!res.ok) throw new Error('couldnt load featured data');
     return await res.json();
 };

@@ -50,6 +50,7 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
+
   },
   inputRoot: {
     color: "inherit",
@@ -114,7 +115,7 @@ const NavBar = () => {
               &nbsp; */}
               <Link to="/profile">
                 <Button
-                  style={{ color: "#e8eaf6", padding: "5px", minWidth: 0 }}
+                  style={{ color: "primary", padding: "5px", minWidth: 0 }}
                 >
                   <AccountCircleIcon />
                 </Button>
@@ -122,7 +123,7 @@ const NavBar = () => {
             </span>
           )}
           {isAuthenticated && (
-            <Button style={{ color: "#e8eaf6" }} onClick={() => logout()}>
+            <Button style={{ color: "primary" }} onClick={() => logout()}>
               Log out
             </Button>
           )}
