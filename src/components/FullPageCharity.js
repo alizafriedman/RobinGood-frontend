@@ -66,7 +66,7 @@ console.log(char)
               </Button>
             </Toolbar>
           </AppBar>
-          <FullPageGraph char={char} />
+          <FullPageGraph char={char}/>
         </Dialog>
       </div>
     );

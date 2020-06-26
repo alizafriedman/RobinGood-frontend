@@ -12,7 +12,8 @@ import {
 import { Palette } from "@devexpress/dx-react-chart";
 import { Animation } from "@devexpress/dx-react-chart";
 import CharityInfoMini from "./CharityInfoMini";
-import {fetchCharity} from '../services/charities'
+import { fetchCharity } from '../services/charities'
+import Home from './Home'
 // import { Legend } from "@devexpress/dx-react-chart";
 
 const MiniGraph = ({
@@ -29,16 +30,18 @@ const MiniGraph = ({
   },
 }) => {
 const [char, setChar] = useState();
-   useEffect(() => {
-     (async () => {
-       try {
-         const regularCharity = await fetchCharity("042401399");
-         setChar(regularCharity);
-       } catch (error) {
-         console.error(error);
-       }
-     })();
-   }, []);
+  //  useEffect(() => {
+  //    (async () => {
+  //      try {
+  //        const regularCharity = await fetchCharity();
+  //        setChar(regularCharity);
+  //      } catch (error) {
+  //        console.error(error);
+  //      }
+  //    })();
+  //  }, []);
+
+  //hardcode array and map over
   if (!char) return null;
   console.log(char)
 
@@ -47,7 +50,7 @@ const [char, setChar] = useState();
           <Chart
         data={char.chart_data}
         className="chart"
-        width="350"
+        width="320"
         height="420"
       >
         <ArgumentAxis />
@@ -64,14 +67,14 @@ const [char, setChar] = useState();
         <Animation />
       </Chart>
       <CharityInfoMini
-        website={char.website}
-        donate_link={char.donate_link}
-        name={char.name}
-        city={char.city}
-        state={char.state}
-        zip_code={char.zip_code}
-        category={char.category}
-        ein={char.ein}
+        website={website}
+        donate_link={donate_link}
+        name={name}
+        city={city}
+        state={state}
+        zip_code={zip_code}
+        category={category}
+        ein={ein}
       />
     </Paper>
   );

@@ -13,24 +13,20 @@ function SearchDialog() {
     const [ein, setEin] = React.useState()
     const [search, setSearch] = React.useState()
     const [char, setChar] = useState()
+    const [term, setTerm] = useState()
 
   const handleClickOpen = () => {
     setOpen(true);
   };
 
  
-    
-    const handleCloseTerm = () => {
-        setOpen(false)
-        //set Term function here
-    }
 
     const handleClose = () => {
         setOpen(false)
     }
 
     const handleSearchTerm = async (e) => {
-      setSearch(e.target.value);
+      setTerm(e.target.value);
     };
 
     const handleSearchEin = async (e) => {
@@ -49,12 +45,29 @@ function SearchDialog() {
        const test = await res.json();
     //    console.log(test)
         setChar(test)
-   };
+    };
+       const fetchCharityTerm = async () => {
+         const res = await fetch(`${api}/charities/search?term=${search}`, {
+           method: "GET",
+           headers: {
+             "Content-Type": "application/json",
+           },
+         });
+
+         if (!res.ok) throw new Error("couldnt load featured data");
+         const test = await res.json();
+         //    console.log(test)
+         setSearch(test);
+       };
     
     const handleCloseEin = () => {
-
        setOpen(false);
        fetchCharity();
+    };
+    
+     const handleCloseTerm = () => {
+       setOpen(false);
+       fetchCharityTerm();
      };
   return (
     <div>
@@ -78,7 +91,7 @@ function SearchDialog() {
               id="name"
               label="Search By Ein"
               type="search"
-              fullWidth
+             fullWidth
               value={ein}
               onChange={handleSearchEin}
             />
@@ -89,7 +102,7 @@ function SearchDialog() {
               label="Search By Term"
               type="search"
               fullWidth
-              //   value={setSearch}
+                value={term}
               onChange={handleSearchTerm}
             />
           </DialogContent>
@@ -106,8 +119,8 @@ function SearchDialog() {
           </DialogActions>
         </form>
       </Dialog>
-      {char && <FullPageCharity char={char} closeDialog={setChar} />}
-    </div>
+      {char && <FullPageCharity char={char} closeDialog={setChar} /> || search && <FullPageCharity char={search} closeDialog={setSearch}/>}
+      </div>
   );
 }
 

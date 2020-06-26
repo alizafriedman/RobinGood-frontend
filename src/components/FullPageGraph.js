@@ -25,7 +25,7 @@ const FullPageGraph = ({
         state,
         zip_code,
         category
-} }) => {
+    }}) => {
   if (!chart_data) return null;
 
   return (

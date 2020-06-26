@@ -3,7 +3,7 @@ import { useAuth0 } from "../react-auth0-spa";
 import { api } from "../config";
 import { Typography } from "@material-ui/core";
 import Graph from './Graph'
-import MiniGraph from './MiniGraph'
+import MGraphs from './MGraphs'
 import CharityInfo from './CharityInfo'
 import { fetchFeaturedCharity, fetchCharity } from "../services/charities";
 import "../styles/home.css";
@@ -42,13 +42,7 @@ const Home = () => {
           url={charity.website}
           charity={charity}
         />
-        
-        <MiniGraph
-          title={charity.name}
-          data={charity.chart_data}
-          url={charity.website}
-          charity={charity}
-        />
+        <MGraphs/>
       </div>
     </>
   );
