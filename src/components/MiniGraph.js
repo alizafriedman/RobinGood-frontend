@@ -14,6 +14,7 @@ import { Animation } from "@devexpress/dx-react-chart";
 import CharityInfoMini from "./CharityInfoMini";
 import { fetchCharity } from '../services/charities'
 import Home from './Home'
+import MGraphs from './MGraphs'
 // import { Legend } from "@devexpress/dx-react-chart";
 
 const MiniGraph = ({
@@ -30,25 +31,14 @@ const MiniGraph = ({
   },
 }) => {
 const [char, setChar] = useState();
-  //  useEffect(() => {
-  //    (async () => {
-  //      try {
-  //        const regularCharity = await fetchCharity();
-  //        setChar(regularCharity);
-  //      } catch (error) {
-  //        console.error(error);
-  //      }
-  //    })();
-  //  }, []);
-
-  //hardcode array and map over
-  if (!char) return null;
-  console.log(char)
+ 
+  // if (!char) return null;
+  console.log(chart_data)
 
   return (
     <Paper className="graph">
           <Chart
-        data={char.chart_data}
+        data={chart_data}
         className="chart"
         width="320"
         height="420"
@@ -62,7 +52,7 @@ const [char, setChar] = useState();
           barWidth="1"
         />
 
-        <Title text={char.name} />
+        <Title text={name} />
 
         <Animation />
       </Chart>

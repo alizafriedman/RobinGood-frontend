@@ -26,3 +26,5 @@ export const fetchCharity = async (charity_id) => {
     if (!res.ok) throw new Error("couldnt load featured data");
     return await res.json();
 }
+
+

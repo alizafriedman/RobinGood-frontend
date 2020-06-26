@@ -27,7 +27,6 @@ const FullPageGraph = ({
         category
     }}) => {
   if (!chart_data) return null;
-
   return (
     <Paper className="graph">
       <Chart data={chart_data} className="chart" width="650">

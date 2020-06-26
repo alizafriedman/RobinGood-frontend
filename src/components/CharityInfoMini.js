@@ -78,22 +78,7 @@ function CharityInfoMini({
   };
 
     
-    const addCharity = async () => {
-        if (user) {
-            const token = await getTokenSilently();
-            const res = await fetch(`${api}/users/${user.id}`, {
-                method: "PATCH",
-                headers: {
-                    Authorization: `Bearer ${token}`,
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify({
-                    charity_id: ein
-                }),
-            });
-            if (!res.ok) throw res;
-        }
-  };
+
   return (
     <div>
       <Button variant="outlined" color="primary" onClick={handleClickOpen}>
@@ -118,12 +103,12 @@ function CharityInfoMini({
           <Typography>click here to visit the website:</Typography>
           <Link>{website}</Link>
           <Typography gutterBottom></Typography>
-          {/* <Link>{name}</Link> */}
+          <a href={name}>{name}</a>
           <Typography gutterBottom>click here to donate:</Typography>
-          <Link>{donate_link}</Link>
+          <a href={donate_link}>{donate_link}</a>
         </DialogContent>
         <DialogActions>
-          <Button autoFocus onClick={addCharity} color="primary">
+          <Button autoFocus color="primary">
             Add Charity
           </Button>
           <Button autoFocus onClick={handleClose} color="primary">

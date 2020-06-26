@@ -31,15 +31,14 @@ const MGraphs = () => {
         graphs()
     },[])
 
+    console.log(array)
     return (
         <>
             {array.map(charity => {
-               return  <MiniGraph charity={charity} />
+               return  <MiniGraph charity={charity} key={charity.id} />
             })}
     </>
 )
-
-
 
 }
 

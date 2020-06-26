@@ -58,7 +58,7 @@ const DialogActions = withStyles((theme) => ({
   },
 }))(MuiDialogActions);
 
-function CharityInfo( {donate_link, website, name, city, state, zip_code, category}) {
+function CharityInfo( {donate_link, website, name, city, state, zip_code, category, addToProfile}) {
     const [open, setOpen] = React.useState(false);
 ;
   
@@ -72,7 +72,8 @@ function CharityInfo( {donate_link, website, name, city, state, zip_code, catego
 
   const addCharity = () => {
     //add to display mini graph with matching ein on this page
-            window.location.href = '/profile';
+            addToProfile()
+    window.location.href = '/profile';
 
   }
   return (
@@ -97,11 +98,11 @@ function CharityInfo( {donate_link, website, name, city, state, zip_code, catego
             {city}, {state}, {zip_code}
           </Typography>
           <Typography>click here to visit the website:</Typography>
-          <Link>{website}</Link>
+          <a href={website}>{website}</a>
           <Typography gutterBottom></Typography>
           {/* <Link>{name}</Link> */}
           <Typography gutterBottom>click here to donate:</Typography>
-          <Link>{donate_link}</Link>
+          <a href={donate_link}>{donate_link}</a>
         </DialogContent>
         <DialogActions>
           <Button autoFocus onClick={addCharity} color="primary">

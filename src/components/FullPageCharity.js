@@ -13,6 +13,8 @@ import Typography from "@material-ui/core/Typography";
 import CloseIcon from "@material-ui/icons/Close";
 import Slide from "@material-ui/core/Slide";
 import FullPageGraph from './FullPageGraph'
+import { useAuth0 } from "../react-auth0-spa";
+import { api } from "../config";
 const useStyles = makeStyles((theme) => ({
   appBar: {
     position: "relative",
@@ -30,6 +32,8 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 function FullPageCharity({char, closeDialog}) {
   const classes = useStyles();
   const [open, setOpen] = React.useState(true);
+  const { user, getTokenSilently, token } = useAuth0();
+
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -37,9 +41,27 @@ function FullPageCharity({char, closeDialog}) {
 
   const handleClose = () => {
       closeDialog(null)
+
     
   };
-console.log(char)
+
+
+  const addToProfile = async () => {
+    console.log(user)
+    const token = await getTokenSilently();
+    await fetch(`${api}/users/${user.userId}`, {
+      method: "PATCH",
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "Content-Type": "application/json",
+      },
+      body:JSON.stringify({
+        charity_id: char.ein
+      })
+    });
+    setOpen(false)
+  
+  }
     return (
       <div>
         <Dialog
@@ -59,14 +81,14 @@ console.log(char)
                 <CloseIcon />
               </IconButton>
               <Typography variant="h6" className={classes.title}>
-                Sound
+                {char.name}
               </Typography>
-              <Button autoFocus color="inherit" onClick={handleClose}>
+              <Button autoFocus color="inherit" onClick={addToProfile}>
                 save
               </Button>
             </Toolbar>
           </AppBar>
-          <FullPageGraph char={char}/>
+          <FullPageGraph char={char} addToProfile={addToProfile}/>
         </Dialog>
       </div>
     );
