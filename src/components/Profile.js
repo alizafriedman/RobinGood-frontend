@@ -10,7 +10,7 @@ import Tab from "@material-ui/core/Tab";
 import Typography from "@material-ui/core/Typography";
 import Box from "@material-ui/core/Box";
 import Button from "@material-ui/core/Button";
-
+import ProfileChar from './ProfileChar'
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
 
@@ -45,8 +45,8 @@ function a11yProps(index) {
 }
 
 const Profile = () => {
-  const { user, loading, getTokenSilently } = useAuth0();
-  const [userSets, setUserSets] = useState([]);
+  const { user, loading, getTokenSilently, token } = useAuth0();
+  const [userCharities, setUserCharities] = useState([]);
   const [favoriteSets, setFavoriteSets] = useState([]);
   const [fetched, setFetched] = useState(false);
   const [value, setValue] = React.useState(0);
@@ -56,21 +56,22 @@ const Profile = () => {
     setValue(newValue);
   };
 
-//   useEffect(() => {
-//     const loadSets = async () => {
-//       const token = await getTokenSilently();
-//       const res = await fetch(`${api}/users/sets`, {
-//         headers: {
-//           Authorization: `Bearer ${token}`,
-//         },
-//       });
-//       const data = await res.json();
-//       setFetched(true);
-//       setUserSets(data.userSets);
-//       setFavoriteSets(data.favoriteSets);
-//     };
-//     loadSets();
-//   }, [getTokenSilently]);
+  // useEffect(() => {
+  //   const loadCharities = async () => {
+  //     const token = await getTokenSilently();
+  //     const res = await fetch(`${api}/users/sets`, {
+  //         headers: {
+  //         Authorization: `Bearer ${token}`,
+  //         "Content-Type": "application/json",
+  //         },
+  //       })
+  //     const data = await res.json();
+  //     console.log(data)
+  //     setUserCharities(data.charity);
+  //     // setFavoriteSets(data.favoriteSets);
+  //   };
+  //   loadCharities();
+  // }, [getTokenSilently]);
 
   if (loading || !user) {
     return <div>Loading...</div>;
@@ -87,7 +88,7 @@ const Profile = () => {
         <h2>{user.name}</h2>
       </div>
 
-      {/* <Paper square className="profile-tabs-container">
+      <Paper square className="profile-tabs-container">
         <Tabs
           value={value}
           // inkBarStyle={{ background: "cadetblue" }}
@@ -95,38 +96,38 @@ const Profile = () => {
           textColor="primary"
           onChange={handleChange}
           aria-label="disabled tabs example"
-        > */}
-          {/* <Tab
+        >
+          <Tab
             inkBarStyle={{ background: "cadetblue" }}
             label="Favorited Sets"
             {...a11yProps(0)}
           />
-          <Tab label="My Sets" {...a11yProps(1)} />
+          <Tab label="My Charities" {...a11yProps(1)} />
           <Tab label="Logout" {...a11yProps(2)} />
         </Tabs>
       </Paper>
       <TabPanel value={value} index={0}>
         <div>
-          <h1>Favorited sets:</h1>
-          <div className="sets-container" id="profile-sets">
+          <h1>Favorited charities:</h1>
+          {/* <div className="sets-container" id="profile-sets">
             {fetched &&
               favoriteSets.map((set) => (
                 <Set set={set} key={set.id} setFetched={setFetched} />
               ))}
-          </div>
+          </div> */}
         </div>
-      </TabPanel> */}
-      {/* <TabPanel value={value} index={1}>
+      </TabPanel>
+      <TabPanel value={value} index={1}>
         <div>
           <h1>My sets:</h1>
           <div className="sets-container" id="profile-sets">
-            {fetched &&
-              userSets.map((set) => (
-                <Set set={set} key={set.id} setFetched={setFetched} />
-              ))}
+            {/* {fetched &&
+              userCharities.map((charity) => (
+                <ProfileChar charity={charity} key={charity.id} setFetched={setFetched} />
+              ))} */}
           </div>
         </div>
-      </TabPanel> */}
+      </TabPanel>
       <TabPanel
         value={value}
         index={2}

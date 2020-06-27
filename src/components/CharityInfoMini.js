@@ -59,14 +59,7 @@ const DialogActions = withStyles((theme) => ({
 }))(MuiDialogActions);
 
 function CharityInfoMini({
-  donate_link,
-  website,
-  name,
-  city,
-  state,
-  zip_code,
-    category,
-  ein
+  charity
 }) {
     const [open, setOpen] = React.useState(false);
     const { user, getTokenSilently, token } = useAuth0();
@@ -78,7 +71,7 @@ function CharityInfoMini({
   };
 
   const addToProfile = async () => {
-
+console.log(charity.ein)
     const token = await getTokenSilently();
     await fetch(`${api}/users/${user.userId}`, {
       method: "PATCH",
@@ -87,7 +80,7 @@ function CharityInfoMini({
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        charity_id: ein
+        charity_id: charity.ein
       })
     });
     setOpen(false)
@@ -106,22 +99,22 @@ function CharityInfoMini({
         open={open}
       >
         <DialogTitle id="customized-dialog-title" onClose={handleClose}>
-          {name}
+          {charity.name}
         </DialogTitle>
         <DialogContent dividers>
           <Typography>
             Category:
-            {category}
+            {charity.category}
           </Typography>
           <Typography>
-            {city}, {state}, {zip_code}
+            {charity.city}, {charity.state}, {charity.zip_code}
           </Typography>
           <Typography>click here to visit the website:</Typography>
-          <Link>{website}</Link>
+          <Link>{charity.website}</Link>
           <Typography gutterBottom></Typography>
-          <a href={name}>{name}</a>
+          <a href={charity.name}>{charity.name}</a>
           <Typography gutterBottom>click here to donate:</Typography>
-          <a href={donate_link}>{donate_link}</a>
+          <a href={charity.donate_link}>{charity.donate_link}</a>
         </DialogContent>
         <DialogActions>
           <Button autoFocus onClick={addToProfile}color="primary">

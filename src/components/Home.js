@@ -32,6 +32,16 @@ const Home = () => {
 
   return (
     <>
+      {user && <h1 className="home-welcome">Welcome, {user.name}</h1>}
+      {!user && (
+        <div>
+          <div className="home-welcome-message">
+            <div >
+              write somethng about data app for charity info blah blah
+                  </div>
+          </div>
+        </div>
+      )}
       <div className="home-content">
         {/* <Typography variant="h5" component="h5">
               

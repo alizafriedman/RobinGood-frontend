@@ -72,9 +72,8 @@ function CharityInfo( {char}) {
     setOpen(false);
   };
 
-console.log(char.ein)
   const test = async () => {
-    console.log(user)
+    setOpen(true)
     const token = await getTokenSilently();
     await fetch(`${api}/users/${user.userId}`, {
       method: "PATCH",

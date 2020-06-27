@@ -69,7 +69,7 @@ const useStyles = makeStyles((theme) => ({
 
 const NavBar = () => {
   const classes = useStyles();
-  const { isAuthenticated, loginWithPopup } = useAuth0();
+  const { isAuthenticated, loginWithPopup, user } = useAuth0();
    const { logout } = useAuth0();
 
   return (
@@ -113,7 +113,7 @@ const NavBar = () => {
                 <Button style={{ color: "#e8eaf6" }}>Home</Button>
               </Link>
               &nbsp; */}
-              <Link to="/profile">
+              <Link to={"/profile"}>
                 <Button
                   style={{ color: "primary", padding: "5px", minWidth: 0 }}
                 >

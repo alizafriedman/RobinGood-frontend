@@ -18,17 +18,7 @@ import MGraphs from './MGraphs'
 // import { Legend } from "@devexpress/dx-react-chart";
 
 const MiniGraph = ({
-  charity: {
-    name,
-    website,
-    chart_data,
-    donate_link,
-    city,
-    state,
-    zip_code,
-    category,
-    ein
-  },
+  charity
 }) => {
 const [char, setChar] = useState();
  
@@ -38,7 +28,7 @@ const [char, setChar] = useState();
   return (
     <Paper className="graph">
           <Chart
-        data={chart_data}
+        data={charity.chart_data}
         className="chart"
         width="320"
         height="420"
@@ -52,19 +42,12 @@ const [char, setChar] = useState();
           barWidth="1"
         />
 
-        <Title text={name} />
+        <Title text={charity.name} />
 
         <Animation />
       </Chart>
       <CharityInfoMini
-        website={website}
-        donate_link={donate_link}
-        name={name}
-        city={city}
-        state={state}
-        zip_code={zip_code}
-        category={category}
-        ein={ein}
+       charity={charity}
       />
     </Paper>
   );
