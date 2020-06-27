@@ -29,7 +29,7 @@ if (!chart_data) return null
           <BarSeries
             valueField="y"
             argumentField="x"
-            color="purple"
+            color="#141D42"
                     barWidth="1"
           />
 

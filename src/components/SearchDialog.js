@@ -8,6 +8,7 @@ import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import { api } from "../config";
 import FullPageCharity from './FullPageCharity'
+import "../styles/searchDialog.css";
 function SearchDialog() {
     const [open, setOpen] = React.useState(false);
     const [ein, setEin] = React.useState()
@@ -74,7 +75,7 @@ function SearchDialog() {
   
   return (
     <div>
-      <Button color="primary" onClick={handleClickOpen}>
+      <Button color="secondary" onClick={handleClickOpen}>
         Search For A Charity
       </Button>
       <Dialog
@@ -97,6 +98,7 @@ function SearchDialog() {
              fullWidth
               value={ein}
               onChange={handleSearchEin}
+              color="secondary"
             />
             <TextField
               autoFocus
@@ -107,16 +109,17 @@ function SearchDialog() {
               fullWidth
                 value={term}
               onChange={handleSearchTerm}
+              color="secondary"
             />
           </DialogContent>
           <DialogActions>
-            <Button onClick={handleClose} color="primary">
+            <Button onClick={handleClose} color="secondary">
               Cancel
             </Button>
-            <Button onClick={handleCloseTerm} color="primary">
+            <Button onClick={handleCloseTerm} color="secondary">
               Search By Term
             </Button>
-            <Button onClick={handleCloseEin} color="primary">
+            <Button onClick={handleCloseEin} color="secondary">
               Search By Ein
             </Button>
           </DialogActions>

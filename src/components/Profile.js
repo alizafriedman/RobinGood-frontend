@@ -92,13 +92,14 @@ const Profile = () => {
         <Tabs
           value={value}
           // inkBarStyle={{ background: "cadetblue" }}
-          indicatorColor="primary "
-          textColor="primary"
+          indicatorColor="secondary"
+          textColor="secondary"
           onChange={handleChange}
           aria-label="disabled tabs example"
+          color="white"
         >
           <Tab
-            inkBarStyle={{ background: "cadetblue" }}
+            // inkBarStyle={{ background: "cadetblue" }}
             label="Favorited Sets"
             {...a11yProps(0)}
           />
@@ -121,10 +122,10 @@ const Profile = () => {
         <div>
           <h1>My sets:</h1>
           <div className="sets-container" id="profile-sets">
-            {/* {fetched &&
+            {fetched &&
               userCharities.map((charity) => (
                 <ProfileChar charity={charity} key={charity.id} setFetched={setFetched} />
-              ))} */}
+              ))}
           </div>
         </div>
       </TabPanel>

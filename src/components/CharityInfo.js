@@ -91,7 +91,7 @@ function CharityInfo( {char}) {
 
   return (
     <div>
-      <Button variant="outlined" color="primary" onClick={handleClickOpen}>
+      <Button variant="outlined" color="secondary" onClick={handleClickOpen}>
         Charity Information
       </Button>
       <Dialog
@@ -118,10 +118,10 @@ function CharityInfo( {char}) {
           <a href={char.donate_link}>{char.donate_link}</a>
         </DialogContent>
         <DialogActions>
-          <Button autoFocus onClick={test} color="primary">
+          <Button autoFocus onClick={test} color="secondary">
             Add Charity
           </Button>
-          <Button autoFocus onClick={handleClose} color="primary">
+          <Button autoFocus onClick={handleClose} color="secondary">
             Close
           </Button>
         </DialogActions>

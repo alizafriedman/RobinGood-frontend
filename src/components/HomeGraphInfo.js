@@ -92,7 +92,7 @@ function HomeGraphInfo({ donate_link, website, ein, name, city, state, zip_code,
 
     return (
         <div>
-            <Button variant="outlined" color="primary" onClick={handleClickOpen}>
+            <Button variant="outlined" color="secondary" onClick={handleClickOpen}>
                 Charity Information
       </Button>
             <Dialog

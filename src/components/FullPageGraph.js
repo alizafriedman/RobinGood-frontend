@@ -24,11 +24,11 @@ const FullPageGraph = ({char}) => {
         <BarSeries
           valueField="y"
           argumentField="x"
-          color="purple"
+          color="#141D42"
           barWidth="1"
         />
 
-        <Title text={char.name} />
+        <Title text={char.name} color='#5785C2'/>
 
         <Animation />
       </Chart>

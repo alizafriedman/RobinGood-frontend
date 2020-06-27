@@ -50,7 +50,9 @@ const Home = () => {
           featured={featured}
           
         />
-        <MGraphs/>
+        <div className='lower-page'>
+        <MGraphs className='mini-graphs' />
+      </div>
       </div>
     </>
   );

@@ -85,7 +85,7 @@ const NavBar = () => {
               <Link to="/" id="navbar-logo">
                 <Button
                   style={{
-                    color: "black",
+                    color: "secondary",
                     fontSize: 20,
                     lineHeight: "28px",
                     textDecoration: "none",
@@ -100,7 +100,7 @@ const NavBar = () => {
 <SearchDialog />
           {!isAuthenticated && (
             <Button
-              style={{ color: "black" }}
+              style={{ color: "primary" }}
               onClick={() => loginWithPopup({})}
             >
               Log in

@@ -35,7 +35,7 @@ const MGraphs = () => {
     return (
         <>
             {array.map(charity => {
-               return  <MiniGraph charity={charity} key={charity.id} />
+               return  <MiniGraph charity={charity} key={charity.ein} />
             })}
     </>
 )

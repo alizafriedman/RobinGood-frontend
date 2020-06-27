@@ -38,7 +38,7 @@ const [char, setChar] = useState();
         <BarSeries
           valueField="y"
           argumentField="x"
-          color="purple"
+          color="#5785C2"
           barWidth="1"
         />
 
@@ -46,7 +46,7 @@ const [char, setChar] = useState();
 
         <Animation />
       </Chart>
-      <CharityInfoMini
+      <CharityInfoMini className='test'
        charity={charity}
       />
     </Paper>

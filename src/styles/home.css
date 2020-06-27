@@ -2,6 +2,21 @@
     text-align: left;
 }
 
-/* #home-content{
+#home-content{
     width: 50vw
+}
+.lower-page {
+    display: flex;
+    justify-content: space-between;
+}
+
+.mini-graphs {
+    flex-direction: row;
+    
+}
+
+/* .chart {
+
+    border: 1px solid #5785C2;
+    border-radius: 10px
 } */

@@ -1,6 +1,50 @@
+.sets-container{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: space-around;
+}
+
+#profile-sets{
+    min-height: calc(100vh - 612px);
+}
+
+.profile-tabs-container{
+    display: flex;
+    justify-content: center;
+    color: white;
+}
+
 .user-info-container{
     display: flex;
     flex-direction: column;
     align-items: center;
     margin-top: 25px;
+}
+
+div.profile-tabs-container {
+    background-color: #141D42;
+    
+}
+
+body {
+    color: white
+}
+
+.logout :hover {
+    color: #00897B;
+}
+
+.logout {
+    display: flex;
+    justify-content: center;
+    
+}
+
+button.logout-button{
+    background-color: #5785C2
+}
+
+button.MuiTab-textColorPrimary{
+    color: white
 }

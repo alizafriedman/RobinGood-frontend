@@ -13,6 +13,8 @@ import { fetchCharity } from "../services/charities";
 import { api } from "../config";
 import Home from "./Home";
 import { useAuth0 } from "../react-auth0-spa";
+import "../styles/charityInfoMini.css";
+
 
 const styles = (theme) => ({
   root: {
@@ -110,17 +112,17 @@ console.log(charity.ein)
             {charity.city}, {charity.state}, {charity.zip_code}
           </Typography>
           <Typography>click here to visit the website:</Typography>
-          <Link>{charity.website}</Link>
+          <a href={charity.website}>{charity.website}</a>
           <Typography gutterBottom></Typography>
-          <a href={charity.name}>{charity.name}</a>
+          {/* <a href={charity.name}>{charity.name}</a> */}
           <Typography gutterBottom>click here to donate:</Typography>
-          <a href={charity.donate_link}>{charity.donate_link}</a>
+          <a color="secondary" href={charity.donate_link}>{charity.donate_link}</a>
         </DialogContent>
         <DialogActions>
-          <Button autoFocus onClick={addToProfile}color="primary">
+          <Button autoFocus onClick={addToProfile}color="secondary">
             Add Charity
           </Button>
-          <Button autoFocus onClick={handleClose} color="primary">
+          <Button autoFocus onClick={handleClose} color="secondary">
             Close
           </Button>
         </DialogActions>
