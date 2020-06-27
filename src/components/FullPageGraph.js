@@ -13,23 +13,12 @@ import { Palette } from "@devexpress/dx-react-chart";
 import { Animation } from "@devexpress/dx-react-chart";
 import CharityInfo from "./CharityInfo";
 
-// import { Legend } from "@devexpress/dx-react-chart";
 
-const FullPageGraph = ({
-    char:
-    { chart_data,
-        website,
-        donate_link,
-        name, 
-        city, 
-        state,
-        zip_code,
-        category
-    }}) => {
-  if (!chart_data) return null;
+const FullPageGraph = ({char}) => {
+  if (!char.chart_data) return null;
   return (
     <Paper className="graph">
-      <Chart data={chart_data} className="chart" width="650">
+      <Chart data={char.chart_data} className="chart" width="650">
         <ArgumentAxis />
         <ValueAxis />
         <BarSeries
@@ -39,18 +28,12 @@ const FullPageGraph = ({
           barWidth="1"
         />
 
-        <Title text={name} />
+        <Title text={char.name} />
 
         <Animation />
       </Chart>
       <CharityInfo
-        website={website}
-        donate_link={donate_link}
-        name={name}
-        city={city}
-        state={state}
-        zip_code={zip_code}
-        category={category}
+        char={char}
       />
     </Paper>
   );

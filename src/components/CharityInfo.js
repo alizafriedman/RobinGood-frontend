@@ -12,6 +12,8 @@ import Typography from "@material-ui/core/Typography";
 import { fetchCharity } from '../services/charities'
 import { api } from "../config";
 import Home from './Home'
+import { useAuth0 } from "../react-auth0-spa";
+
 
 
 const styles = (theme) => ({
@@ -58,8 +60,9 @@ const DialogActions = withStyles((theme) => ({
   },
 }))(MuiDialogActions);
 
-function CharityInfo( {donate_link, website, name, city, state, zip_code, category, addToProfile}) {
-    const [open, setOpen] = React.useState(false);
+function CharityInfo( {char}) {
+  const [open, setOpen] = React.useState(false);
+  const { user, getTokenSilently, token } = useAuth0();
 ;
   
   const handleClickOpen = () => {
@@ -69,13 +72,24 @@ function CharityInfo( {donate_link, website, name, city, state, zip_code, catego
     setOpen(false);
   };
 
-
-  const addCharity = () => {
-    //add to display mini graph with matching ein on this page
-            addToProfile()
-    window.location.href = '/profile';
+console.log(char.ein)
+  const test = async () => {
+    console.log(user)
+    const token = await getTokenSilently();
+    await fetch(`${api}/users/${user.userId}`, {
+      method: "PATCH",
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        charity_id: char.ein
+      })
+    });
+    setOpen(false)
 
   }
+
   return (
     <div>
       <Button variant="outlined" color="primary" onClick={handleClickOpen}>
@@ -87,25 +101,25 @@ function CharityInfo( {donate_link, website, name, city, state, zip_code, catego
         open={open}
       >
         <DialogTitle id="customized-dialog-title" onClose={handleClose}>
-          {name}
+          {char.name}
         </DialogTitle>
         <DialogContent dividers>
           <Typography>
             Category:
-            {category}
+            {char.category}
           </Typography>
           <Typography>
-            {city}, {state}, {zip_code}
+            {char.city}, {char.state}, {char.zip_code}
           </Typography>
           <Typography>click here to visit the website:</Typography>
-          <a href={website}>{website}</a>
+          <a href={char.website}>{char.website}</a>
           <Typography gutterBottom></Typography>
           {/* <Link>{name}</Link> */}
           <Typography gutterBottom>click here to donate:</Typography>
-          <a href={donate_link}>{donate_link}</a>
+          <a href={char.donate_link}>{char.donate_link}</a>
         </DialogContent>
         <DialogActions>
-          <Button autoFocus onClick={addCharity} color="primary">
+          <Button autoFocus onClick={test} color="primary">
             Add Charity
           </Button>
           <Button autoFocus onClick={handleClose} color="primary">

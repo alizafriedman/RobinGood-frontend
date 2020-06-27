@@ -33,7 +33,7 @@ const MiniGraph = ({
 const [char, setChar] = useState();
  
   // if (!char) return null;
-  console.log(chart_data)
+  // console.log(charity)
 
   return (
     <Paper className="graph">

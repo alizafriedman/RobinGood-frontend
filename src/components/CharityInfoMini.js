@@ -69,7 +69,7 @@ function CharityInfoMini({
   ein
 }) {
     const [open, setOpen] = React.useState(false);
-    const { user, getTokenSilently } = useAuth0();
+    const { user, getTokenSilently, token } = useAuth0();
   const handleClickOpen = () => {
     setOpen(true);
   };
@@ -77,6 +77,22 @@ function CharityInfoMini({
     setOpen(false);
   };
 
+  const addToProfile = async () => {
+
+    const token = await getTokenSilently();
+    await fetch(`${api}/users/${user.userId}`, {
+      method: "PATCH",
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        charity_id: ein
+      })
+    });
+    setOpen(false)
+
+  }
     
 
   return (
@@ -108,7 +124,7 @@ function CharityInfoMini({
           <a href={donate_link}>{donate_link}</a>
         </DialogContent>
         <DialogActions>
-          <Button autoFocus color="primary">
+          <Button autoFocus onClick={addToProfile}color="primary">
             Add Charity
           </Button>
           <Button autoFocus onClick={handleClose} color="primary">

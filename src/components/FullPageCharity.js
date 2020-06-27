@@ -41,14 +41,14 @@ function FullPageCharity({char, closeDialog}) {
 
   const handleClose = () => {
       closeDialog(null)
-
+    
     
   };
 
 
   const addToProfile = async () => {
-    console.log(user)
     const token = await getTokenSilently();
+
     await fetch(`${api}/users/${user.userId}`, {
       method: "PATCH",
       headers: {
@@ -59,8 +59,7 @@ function FullPageCharity({char, closeDialog}) {
         charity_id: char.ein
       })
     });
-    setOpen(false)
-  
+  setOpen(false)
   }
     return (
       <div>
@@ -88,7 +87,7 @@ function FullPageCharity({char, closeDialog}) {
               </Button>
             </Toolbar>
           </AppBar>
-          <FullPageGraph char={char} addToProfile={addToProfile}/>
+          <FullPageGraph char={char}/>
         </Dialog>
       </div>
     );

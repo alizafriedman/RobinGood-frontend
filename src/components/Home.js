@@ -10,15 +10,15 @@ import "../styles/home.css";
 
 const Home = () => {
   const { user, loading, getTokenSilently, isAuthenticated } = useAuth0();
-  const [charity, setCharity] = useState();
+  const [featured, setFeatured] = useState();
   
 
   
   useEffect(() => {
     (async () => {
       try {
-        const featuredCharity = await fetchFeaturedCharity();
-        setCharity(featuredCharity);
+        const featCharity = await fetchFeaturedCharity();
+        setFeatured(featCharity);
       } catch (error) {
         console.error(error);
       }
@@ -27,7 +27,7 @@ const Home = () => {
  
   
  
-  if (!charity) return null;
+  if (!featured) return null;
    
 
   return (
@@ -37,10 +37,8 @@ const Home = () => {
               
             </Typography> */}
         <Graph
-          title={charity.name}
-          data={charity.chart_data}
-          url={charity.website}
-          charity={charity}
+          featured={featured}
+          
         />
         <MGraphs/>
       </div>

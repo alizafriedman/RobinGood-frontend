@@ -11,14 +11,16 @@ import {
 } from "@devexpress/dx-react-chart-material-ui";
 import { Palette } from "@devexpress/dx-react-chart";
 import { Animation } from "@devexpress/dx-react-chart";
-import CharityInfo from './CharityInfo'
+import HomeGraphInfo from './HomeGraphInfo'
 // import { Legend } from "@devexpress/dx-react-chart";
 
-const Graph = ({charity: { name, website, chart_data, donate_link, city, state, zip_code, category  }}) => {
+
+
+//main graph displayed on the home page
+const Graph = ({featured: { name, website, chart_data, ein, donate_link, city, state, zip_code, category  }}) => {
    
 
 if (!chart_data) return null
-        
     return (
       <Paper className="graph">
         <Chart data={chart_data} className="chart" width="650">
@@ -35,7 +37,7 @@ if (!chart_data) return null
 
           <Animation />
             </Chart>
-            <CharityInfo website={website} donate_link={donate_link} name={name} city={city} state={state} zip_code={zip_code} category={category} />
+        <HomeGraphInfo ein={ein} name={name} donate_link={donate_link} city={city} state={state} zip_code={zip_code} category={category}  />
       </Paper>
     );
     
