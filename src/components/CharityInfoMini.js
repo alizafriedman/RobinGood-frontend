@@ -104,22 +104,22 @@ console.log(charity.ein)
           {charity.name}
         </DialogTitle>
         <DialogContent dividers>
-          <Typography>
-            Category:
-            {charity.category}
-          </Typography>
+          <Typography>{charity.category}</Typography>
+          <Typography id='text'>Location:</Typography>
           <Typography>
             {charity.city}, {charity.state}, {charity.zip_code}
           </Typography>
-          <Typography>click here to visit the website:</Typography>
-          <a href={charity.website}>{charity.website}</a>
+          <Typography id="text">click here to visit the website:</Typography>
+          <a href={charity.website} color='secondary'>{charity.website}</a>
           <Typography gutterBottom></Typography>
           {/* <a href={charity.name}>{charity.name}</a> */}
-          <Typography gutterBottom>click here to donate:</Typography>
-          <a color="secondary" href={charity.donate_link}>{charity.donate_link}</a>
+          <Typography id="text">click here to donate:</Typography>
+          <a color="secondary" href={charity.donate_link}>
+            {charity.donate_link}
+          </a>
         </DialogContent>
         <DialogActions>
-          <Button autoFocus onClick={addToProfile}color="secondary">
+          <Button autoFocus onClick={addToProfile} color="secondary">
             Add Charity
           </Button>
           <Button autoFocus onClick={handleClose} color="secondary">

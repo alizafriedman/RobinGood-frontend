@@ -1,7 +1,6 @@
 // import * as React from "react";
 import React from "react";
 import "../styles/graph.css";
-
 import Paper from "@material-ui/core/Paper";
 import {
   Chart,
@@ -13,13 +12,26 @@ import {
 import { Palette } from "@devexpress/dx-react-chart";
 import { Animation } from "@devexpress/dx-react-chart";
 import CharityInfo from "./CharityInfo";
-import PopPagePics from './PopPagePics'
 
-const FullPageGraph = ({char}) => {
-  if (!char.chart_data) return null;
+const UserSavedGraphs = ({ charity }) => {
+
+    // const fetchCharity = async () => {
+    //   const res = await fetch(`${api}/charities/${ein}`, {
+    //     method: "GET",
+    //     headers: {
+    //       "Content-Type": "application/json",
+    //     },
+    //   });
+
+    //   if (!res.ok) throw new Error("couldnt load featured data");
+    //   const test = await res.json();
+    //   console.log(test.charity);
+    //   setChar(test);
+    // };
+  if (!charity.chart_data) return null;
   return (
     <Paper className="graph">
-      <Chart data={char.chart_data} className="chart" width="650">
+      <Chart data={charity.chart_data} className="chart" width="650">
         <ArgumentAxis />
         <ValueAxis />
         <BarSeries
@@ -29,15 +41,13 @@ const FullPageGraph = ({char}) => {
           barWidth="1"
         />
 
-        <Title text={char.name} color="#5785C2" />
+        <Title text={charity.name} color="#5785C2" />
 
         <Animation />
-        <CharityInfo char={char} />
       </Chart>
-
-      <PopPagePics />
+      <CharityInfo charity={charity} />
     </Paper>
   );
 };
 
-export default FullPageGraph;
+export default UserSavedGraphs;

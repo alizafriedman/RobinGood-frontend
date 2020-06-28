@@ -26,7 +26,7 @@ const ProfileChar = ({
     const { user, getTokenSilently, token } = useAuth0();
 
 
-    // if (!char) return null;
+    if (!char) return null;
     // console.log(charity)
 
     return (

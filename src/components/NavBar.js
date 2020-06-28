@@ -5,7 +5,7 @@ import { useAuth0 } from "../react-auth0-spa";
 // import SideBarBrowse from "./SideBarBrowse";
 import "../styles/navbar.css";
 import SearchDialog from './SearchDialog'
-
+import SavedCharities from './SavedCharities'
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
@@ -97,7 +97,10 @@ const NavBar = () => {
               </Link>
             </div>
           </Typography>
-<SearchDialog />
+          <SearchDialog />
+          {isAuthenticated && (
+            <SavedCharities />
+          )}
           {!isAuthenticated && (
             <Button
               style={{ color: "primary" }}
@@ -107,20 +110,20 @@ const NavBar = () => {
             </Button>
           )}
 
-          {isAuthenticated && (
-            <span>
+          {/* {isAuthenticated && (
+            <span> */}
               {/* <Link to="/">
                 <Button style={{ color: "#e8eaf6" }}>Home</Button>
               </Link>
               &nbsp; */}
-              <Link to={"/profile"}>
+              {/* <Link to={"/profile"}>
                 <Button
                   style={{ color: "primary", padding: "5px", minWidth: 0 }}
                 >
                   <AccountCircleIcon />
                 </Button>
               </Link>
-            </span>
+            </span> */}
           )}
           {isAuthenticated && (
             <Button style={{ color: "primary" }} onClick={() => logout()}>

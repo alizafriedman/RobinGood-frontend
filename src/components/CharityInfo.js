@@ -13,6 +13,7 @@ import { fetchCharity } from '../services/charities'
 import { api } from "../config";
 import Home from './Home'
 import { useAuth0 } from "../react-auth0-spa";
+import "../styles/charityInfoMini.css";
 
 
 
@@ -103,19 +104,19 @@ function CharityInfo( {char}) {
           {char.name}
         </DialogTitle>
         <DialogContent dividers>
-          <Typography>
-            Category:
-            {char.category}
-          </Typography>
+          <Typography>{char.category}</Typography>
+          <Typography id="text">Location:</Typography>
+
           <Typography>
             {char.city}, {char.state}, {char.zip_code}
           </Typography>
-          <Typography>click here to visit the website:</Typography>
+          <Typography id="text">click here to visit the website:</Typography>
           <a href={char.website}>{char.website}</a>
           <Typography gutterBottom></Typography>
-          {/* <Link>{name}</Link> */}
-          <Typography gutterBottom>click here to donate:</Typography>
-          <a href={char.donate_link}>{char.donate_link}</a>
+          <Typography gutterBottom id="text">
+            click here to donate:
+          </Typography>
+          <a href={char.donate_link} color='secondary'>{char.donate_link}</a>
         </DialogContent>
         <DialogActions>
           <Button autoFocus onClick={test} color="secondary">

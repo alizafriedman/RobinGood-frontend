@@ -1,6 +1,6 @@
 // import * as React from "react";
 import React, {useEffect, useState} from "react";
-import "../styles/graph.css";
+import "../styles/miniGraph.css";
 import Paper from "@material-ui/core/Paper";
 import {
   Chart,
@@ -8,6 +8,8 @@ import {
   Title,
   ArgumentAxis,
   ValueAxis,
+  SeriesTemplate,
+  CommonSeriesSettings
 } from "@devexpress/dx-react-chart-material-ui";
 import { Palette } from "@devexpress/dx-react-chart";
 import { Animation } from "@devexpress/dx-react-chart";
@@ -15,6 +17,7 @@ import CharityInfoMini from "./CharityInfoMini";
 import { fetchCharity } from '../services/charities'
 import Home from './Home'
 import MGraphs from './MGraphs'
+
 // import { Legend } from "@devexpress/dx-react-chart";
 
 const MiniGraph = ({
@@ -32,17 +35,20 @@ const [char, setChar] = useState();
         className="chart"
         width="320"
         height="420"
+        resolveLabelOverlapping="stack"
+        
       >
-        <ArgumentAxis />
-        <ValueAxis />
+        <ArgumentAxis/>
+        <ValueAxis  />
         <BarSeries
           valueField="y"
           argumentField="x"
           color="#5785C2"
           barWidth="1"
+          size='5px'
         />
 
-        <Title text={charity.name} />
+        <Title text={charity.name} className='apple' />
 
         <Animation />
       </Chart>

@@ -7,6 +7,8 @@ import MGraphs from './MGraphs'
 import CharityInfo from './CharityInfo'
 import { fetchFeaturedCharity, fetchCharity } from "../services/charities";
 import "../styles/home.css";
+import HomeImage from './HomeImage'
+
 
 const Home = () => {
   const { user, loading, getTokenSilently, isAuthenticated } = useAuth0();
@@ -46,6 +48,7 @@ const Home = () => {
         {/* <Typography variant="h5" component="h5">
               
             </Typography> */}
+        <HomeImage />
         <Graph
           featured={featured}
           

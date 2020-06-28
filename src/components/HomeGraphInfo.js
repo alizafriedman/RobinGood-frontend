@@ -13,6 +13,7 @@ import { fetchCharity } from '../services/charities'
 import { api } from "../config";
 import Home from './Home'
 import { useAuth0 } from "../react-auth0-spa";
+import "../styles/charityInfoMini.css";
 
 
 
@@ -91,43 +92,40 @@ function HomeGraphInfo({ donate_link, website, ein, name, city, state, zip_code,
     }
 
     return (
-        <div>
-            <Button variant="outlined" color="secondary" onClick={handleClickOpen}>
-                Charity Information
-      </Button>
-            <Dialog
-                onClose={handleClose}
-                aria-labelledby="customized-dialog-title"
-                open={open}
-            >
-                <DialogTitle id="customized-dialog-title" onClose={handleClose}>
-                    {name}
-                </DialogTitle>
-                <DialogContent dividers>
-                    <Typography>
-                        Category:
-            {category}
-                    </Typography>
-                    <Typography>
-                        {city}, {state}, {zip_code}
-                    </Typography>
-                    <Typography>click here to visit the website:</Typography>
-                    <a href={website}>{website}</a>
-                    <Typography gutterBottom></Typography>
-                    {/* <Link>{name}</Link> */}
-                    <Typography gutterBottom>click here to donate:</Typography>
-                    <a href={donate_link}>{donate_link}</a>
-                </DialogContent>
-                <DialogActions>
-                    <Button autoFocus onClick={test} color="primary">
-                        Add Charity
-          </Button>
-                    <Button autoFocus onClick={handleClose} color="primary">
-                        Close
-          </Button>
-                </DialogActions>
-            </Dialog>
-        </div>
+      <div>
+        <Button variant="outlined" color="secondary" onClick={handleClickOpen}>
+          Charity Information
+        </Button>
+        <Dialog
+          onClose={handleClose}
+          aria-labelledby="customized-dialog-title"
+          open={open}
+        >
+          <DialogTitle id="customized-dialog-title" onClose={handleClose}>
+            {name}
+          </DialogTitle>
+          <DialogContent dividers>
+            <Typography>{category}</Typography>
+            <Typography id="text">Location:</Typography>
+            <Typography>
+              {city}, {state}, {zip_code}
+            </Typography>
+            <Typography id='text'>click here to visit the website:</Typography>
+            <a href={website} color='secondary'>{website}</a>
+            <Typography gutterBottom></Typography>
+            <Typography id='text'>click here to donate:</Typography>
+            <a href={donate_link} color='secondary'>{donate_link}</a>
+          </DialogContent>
+          <DialogActions>
+            <Button autoFocus onClick={test} color="primary">
+              Add Charity
+            </Button>
+            <Button autoFocus onClick={handleClose} color="primary">
+              Close
+            </Button>
+          </DialogActions>
+        </Dialog>
+      </div>
     );
 }
 
