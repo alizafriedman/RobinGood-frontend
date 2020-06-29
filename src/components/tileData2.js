@@ -1,42 +1,42 @@
-import heart from "/Users/lizziefriedman/Desktop/robinGood/robingood-frontend/src/images/heart.jpg";
-import text from "/Users/lizziefriedman/Desktop/robinGood/robingood-frontend/src/images/text.jpg";
-import hands from "/Users/lizziefriedman/Desktop/robinGood/robingood-frontend/src/images/hands.jpg";
-import love from "/Users/lizziefriedman/Desktop/robinGood/robingood-frontend/src/images/love.jpg";
-import girls from "/Users/lizziefriedman/Desktop/robinGood/robingood-frontend/src/images/girls.jpg";
-import baby from "/Users/lizziefriedman/Desktop/robinGood/robingood-frontend/src/images/baby.jpg";
+import jar from "/Users/lizziefriedman/Desktop/robinGood/robingood-frontend/src/images/jar.jpg";
+import plant from "/Users/lizziefriedman/Desktop/robinGood/robingood-frontend/src/images/plant.jpg";
+import piggy from "/Users/lizziefriedman/Desktop/robinGood/robingood-frontend/src/images/piggy.jpg";
+import change from "/Users/lizziefriedman/Desktop/robinGood/robingood-frontend/src/images/change.jpg";
+import money from "/Users/lizziefriedman/Desktop/robinGood/robingood-frontend/src/images/money.jpg";
+import nickel from "/Users/lizziefriedman/Desktop/robinGood/robingood-frontend/src/images/nickel.jpg";
 const tileData2 = [
   {
-    img: heart,
+    img: jar,
     title: "Image",
     author: "author",
     cols: 1,
   },
   {
-    img: text,
+    img: plant,
     title: "Image",
     author: "author",
     cols: 1,
   },
   {
-    img: hands,
+    img: piggy,
     title: "Image",
     author: "author",
     cols: 1,
   },
   {
-    img: love,
+    img: change,
     title: "Image",
     author: "author",
     cols: 1,
   },
   {
-    img: girls,
+    img: money,
     title: "Image",
     author: "author",
     cols: 1,
   },
   {
-    img: baby,
+    img: nickel,
     title: "Image",
     author: "author",
     cols: 1,

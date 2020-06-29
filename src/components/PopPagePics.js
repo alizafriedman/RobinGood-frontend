@@ -15,17 +15,17 @@ const useStyles = makeStyles((theme) => ({
 
   },
   gridList: {
-    width: 300,
-    height: 650,
+    width: 1500,
+    height: 150,
   },
 }));
 
-function HomeImage() {
+function PopPagePics() {
   const classes = useStyles();
 
   return (
     <div className={classes.root}>
-      <GridList cellHeight={160} className={classes.gridList} cols={2}>
+      <GridList cellHeight={160} className={classes.gridList} cols={6}>
         {tileData2.map((tile) => (
           <GridListTile key={tile.img} cols={tile.cols || 1}>
             <img src={tile.img} alt={tile.title} />
@@ -36,4 +36,4 @@ function HomeImage() {
   );
 }
 
-export default HomeImage;
+export default PopPagePics;

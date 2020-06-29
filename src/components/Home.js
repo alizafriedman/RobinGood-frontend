@@ -29,34 +29,36 @@ const Home = () => {
  
   
  
-  if (!featured) return null;
+  // if (!featured) return null;
    
 
   return (
     <>
-      {user && <h1 className="home-welcome">Welcome, {user.name}</h1>}
-      {!user && (
-        <div>
-          <div className="home-welcome-message">
-            <div >
-              write somethng about data app for charity info blah blah
-                  </div>
-          </div>
-        </div>
-      )}
-      <div className="home-content">
-        {/* <Typography variant="h5" component="h5">
+      {loading}
+      {!loading && (
+        <>
+          {user && <h1 className="home-welcome">Welcome, {user.name}</h1>}
+          {!user && (
+            <div>
+              <div className="home-welcome-message">
+                <div>
+                  write somethng about data app for charity info blah blah
+                </div>
+              </div>
+            </div>
+          )}
+          <div className="home-content">
+            {/* <Typography variant="h5" component="h5">
               
             </Typography> */}
-        <HomeImage />
-        <Graph
-          featured={featured}
-          
-        />
-        <div className='lower-page'>
-        <MGraphs className='mini-graphs' />
-      </div>
-      </div>
+            <HomeImage />
+            <Graph featured={featured} />
+            <div className="lower-page">
+              <MGraphs className="mini-graphs" />
+            </div>
+          </div>
+        </>
+      )}
     </>
   );
 }

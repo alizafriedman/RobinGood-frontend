@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
 import Dialog from "@material-ui/core/Dialog";
@@ -33,12 +33,14 @@ function SavedCharities() {
   const classes = useStyles();
     const [open, setOpen] = React.useState(false);
     const [saved, setSaved] = React.useState([])
-      const { user, getTokenSilently, token } = useAuth0();
-  const [einArray, setEinArray] = React.useState();
+      const { user, getTokenSilently, token, loading } = useAuth0();
+  const [einArray, setEinArray] = React.useState([]);
   const [char, setChar] = React.useState()
+   const [fetched, setFetched] = useState(false);
+   const [loaded, setLoaded] = useState(false);
 
+  
 
-  if (!user) return null;
 
     const fetchSaved = async () => {
                const token = await getTokenSilently();
@@ -51,58 +53,73 @@ function SavedCharities() {
        });
 
        if (!res.ok) throw new Error("couldnt load featured data");
-       const test = await res.json();
+      const test = await res.json();
+      console.log(test.charity)
       setEinArray(test.charity);
     };
   
 
-//has ein broken at this point so can pass into fetch
 
-  console.log(einArray)
-    const handleClickOpen = () => {
+  
+  const handleClickOpen = (e) => {
+    e.preventDefault()
+  
+      setOpen(true);
       fetchSaved();
-      setOpen(true); 
+    setLoaded(true)
+    
+    
+          console.log(einArray);
+
   };
 
     const handleClose = () => {   
     setOpen(false);
     };
     
-
-
+  
   return (
-    <div>
-      <Button  color="secondary" onClick={handleClickOpen}>
-        View Saved Charities
-      </Button>
-      <Dialog
-        fullScreen
-        open={open}
-        onClose={handleClose}
-        TransitionComponent={Transition}
-      >
-        <AppBar className={classes.appBar}>
-          <Toolbar>
-            <IconButton
-              edge="start"
-              color="inherit"
-              onClick={handleClose}
-              aria-label="close"
-            >
-              <CloseIcon />
-            </IconButton>
-            <Typography variant="h6" className={classes.title}>
-              Sound
-            </Typography>
-            <Button autoFocus color="inherit" onClick={handleClose}>
-              save
+    <>
+      {!loading && (
+        <>
+          <div>
+            <Button color="secondary" onClick={handleClickOpen}>
+              View Saved Charities
             </Button>
-            <UGraphs einArray={einArray} />
-          </Toolbar>
-        </AppBar>
-      </Dialog>
-    </div>
+            <Dialog
+              fullScreen
+              open={open}
+              onClose={handleClose}
+              TransitionComponent={Transition}
+            >
+              <AppBar className={classes.appBar}>
+                <Toolbar>
+                  <IconButton
+                    edge="start"
+                    color="inherit"
+                    onClick={handleClose}
+                    aria-label="close"
+                  >
+                    <CloseIcon />
+                  </IconButton>
+                  <Typography variant="h6" className={classes.title}>
+                    Sound
+                  </Typography>
+                  <Button autoFocus color="inherit" onClick={handleClose}>
+                    save
+                  </Button>
+                  {einArray.length>0 &&
+                    <UGraphs einArray={einArray}/>
+                  }
+                </Toolbar>
+              </AppBar>
+            </Dialog>
+          </div>
+        </>
+      )}
+    </>
   );
+  
 }
 
 

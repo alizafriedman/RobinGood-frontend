@@ -15,11 +15,15 @@ import { fetchCharity } from "../services/charities";
 import Home from "./Home";
 import MiniGraph from './MiniGraph'
 import { api } from "../config";
+import { useAuth0 } from "../react-auth0-spa";
+
 
 
 
 const MGraphs = () => {
     const [array, setArray] = useState([])
+          const { user, getTokenSilently, token, loading } = useAuth0();
+
 
     useEffect(() => {
         const graphs = async () => {
@@ -31,14 +35,17 @@ const MGraphs = () => {
         graphs()
     },[])
 
-    console.log(array)
     return (
-        <>
-            {array.map(charity => {
-               return  <MiniGraph charity={charity} key={charity.ein} />
+      <>
+        {!loading && (
+          <>
+            {array.map((charity) => {
+              return <MiniGraph charity={charity} key={charity.ein} />;
             })}
-    </>
-)
+          </>
+        )}
+      </>
+    );
 
 }
 

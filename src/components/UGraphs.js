@@ -18,32 +18,36 @@ import { api } from "../config";
 import UserSavedGraphs from './UserSavedGraphs'
  import { useAuth0 } from "../react-auth0-spa";
 
-const MGraphs = ({ einArray }) => {
+const UGraphs = ({ einArray }) => {
     const [array, setArray] = useState([]);
     let [ein, setEin] = React.useState()
      const [fetched, setFetched] = useState(false);
+  const [loaded, setLoaded] = useState(false);
+  // const [einArray, setEinArray] = React.useState();
 
   const { user, getTokenSilently, token, loading } = useAuth0();
 
 
 console.log(einArray)
-    useEffect(() => {
-        const apple = einArray.forEach(async ein => {
-            const res = await fetch(`${api}/charities/${ein}`, {
-                method: "GET",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-            });
+// if (!loading) return null
 
-            if (!res.ok) throw new Error("couldnt load featured data");
-            const test = await res.json();
-            console.log(test.charity);
-            setArray(test);
-            setFetched(true)
-        })
-        apple()
-    }, [loading])
+useEffect(()=>{
+  const loadCharities = async() =>{
+    einArray.forEach(async (ein) => {
+        const res = await fetch(`${api}/charities/${ein}`);
+        if (!res.ok) throw new Error("couldnt load featured data");
+        const test = await res.json();
+        console.log(test);
+        setArray([...array, test]);
+        setFetched(true)
+    })
+    
+
+  }
+  loadCharities()
+  console.log(array);
+},[])
+
 
     
 //   useEffect(() => {
@@ -68,14 +72,19 @@ console.log(einArray)
     //     console.log(test.charity);
     //     setArray(test);
     //   };
-  console.log(array);
-  return (
+ 
+    return (
       <>
-          {array.map((charity) => {
-        return <UserSavedGraphs charity={charity} key={charity.ein} />;
-      })}
-    </>
-  );
+        {!loading && (
+          <>
+            {array.map((charity) => {
+              return <UserSavedGraphs charity={charity} key={charity.ein} />;
+            })}
+          </>
+        )}
+      </>
+    );
+  
 };
 
-export default MGraphs;
+export default UGraphs;

@@ -45,7 +45,7 @@ const UserSavedGraphs = ({ charity }) => {
 
         <Animation />
       </Chart>
-      <CharityInfo charity={charity} />
+      {/* <CharityInfo charity={charity} /> */}
     </Paper>
   );
 };

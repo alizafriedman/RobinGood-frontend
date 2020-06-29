@@ -63,7 +63,7 @@ const DialogActions = withStyles((theme) => ({
 
 function HomeGraphInfo({ donate_link, website, ein, name, city, state, zip_code, category }) {
     const [open, setOpen] = React.useState(false);
-    const { user, getTokenSilently, token } = useAuth0();
+    const { user, getTokenSilently, token, loading } = useAuth0();
     ;
 
     const handleClickOpen = () => {
@@ -73,9 +73,8 @@ function HomeGraphInfo({ donate_link, website, ein, name, city, state, zip_code,
         setOpen(false);
     };
 
-    console.log(ein)
+  console.log(user)
     const test = async () => {
-        console.log(user)
         const token = await getTokenSilently();
         await fetch(`${api}/users/${user.userId}`, {
             method: "PATCH",
@@ -91,42 +90,59 @@ function HomeGraphInfo({ donate_link, website, ein, name, city, state, zip_code,
 
     }
 
-    return (
-      <div>
-        <Button variant="outlined" color="secondary" onClick={handleClickOpen}>
-          Charity Information
-        </Button>
-        <Dialog
-          onClose={handleClose}
-          aria-labelledby="customized-dialog-title"
-          open={open}
-        >
-          <DialogTitle id="customized-dialog-title" onClose={handleClose}>
-            {name}
-          </DialogTitle>
-          <DialogContent dividers>
-            <Typography>{category}</Typography>
-            <Typography id="text">Location:</Typography>
-            <Typography>
-              {city}, {state}, {zip_code}
-            </Typography>
-            <Typography id='text'>click here to visit the website:</Typography>
-            <a href={website} color='secondary'>{website}</a>
-            <Typography gutterBottom></Typography>
-            <Typography id='text'>click here to donate:</Typography>
-            <a href={donate_link} color='secondary'>{donate_link}</a>
-          </DialogContent>
-          <DialogActions>
-            <Button autoFocus onClick={test} color="primary">
-              Add Charity
+  return (
+    <>
+     
+      {!loading && (
+        <>
+          <div>
+            <Button
+              variant="outlined"
+              color="secondary"
+              onClick={handleClickOpen}
+            >
+              Charity Information
             </Button>
-            <Button autoFocus onClick={handleClose} color="primary">
-              Close
-            </Button>
-          </DialogActions>
-        </Dialog>
-      </div>
-    );
+            <Dialog
+              onClose={handleClose}
+              aria-labelledby="customized-dialog-title"
+              open={open}
+            >
+              <DialogTitle id="customized-dialog-title" onClose={handleClose}>
+                {name}
+              </DialogTitle>
+              <DialogContent dividers>
+                <Typography>{category}</Typography>
+                <Typography id="text">Location:</Typography>
+                <Typography>
+                  {city}, {state}, {zip_code}
+                </Typography>
+                <Typography id="text">
+                  click here to visit the website:
+                </Typography>
+                <a href={website} color="secondary">
+                  {website}
+                </a>
+                <Typography gutterBottom></Typography>
+                <Typography id="text">click here to donate:</Typography>
+                <a href={donate_link} color="secondary">
+                  {donate_link}
+                </a>
+              </DialogContent>
+              <DialogActions>
+                <Button autoFocus onClick={test} color="primary">
+                  Add Charity
+                </Button>
+                <Button autoFocus onClick={handleClose} color="primary">
+                  Close
+                </Button>
+              </DialogActions>
+            </Dialog>
+          </div>
+        </>
+      )}
+    </>
+  );
 }
 
 
