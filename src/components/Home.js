@@ -28,7 +28,7 @@ const Home = () => {
   }, [loading]);
  
   
- 
+ console.log(featured)
   if (!featured) return null;
    
 

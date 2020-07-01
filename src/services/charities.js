@@ -10,7 +10,8 @@ export const fetchFeaturedCharity = async () => {
     },
   });
     // console.log(res)
-    if (!res.ok) throw new Error('couldnt load featured data');
+  if (!res.ok) throw new Error('couldnt load featured data');
+  console.log(res)
     return await res.json();
 };
 
