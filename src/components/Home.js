@@ -34,11 +34,11 @@ const Home = () => {
 
   return (
     <>
-      {loading}
+      {/* {loading} */}
       {!loading && (
         <>
-          {user && <h1 className="home-welcome">Welcome, {user.name}</h1>}
-          {!user && (
+          {/* {user && <h1 className="home-welcome">Welcome, {user.name}</h1>} */}
+          {/* {!user && (
             <div>
               <div className="home-welcome-message">
                 <div>
@@ -46,13 +46,13 @@ const Home = () => {
                 </div>
               </div>
             </div>
-          )}
+          )} */}
           <div className="home-content">
             {/* <Typography variant="h5" component="h5">
               
             </Typography> */}
             <HomeImage />
-            <Graph featured={featured} />
+            <Graph featured={featured[0]} />
             <div className="lower-page">
               <MGraphs className="mini-graphs" />
             </div>

@@ -19,7 +19,8 @@ import HomeGraphInfo from './HomeGraphInfo'
 //main graph displayed on the home page
 const Graph = ({featured: { name, website, chart_data, ein, donate_link, city, state, zip_code, category  }}) => {
    
-
+  console.log(chart_data)
+  console.log(name)
 if (!chart_data) return null
     return (
       <Paper className="graph">
