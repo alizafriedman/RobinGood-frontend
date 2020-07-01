@@ -102,17 +102,15 @@ function SavedCharities() {
                   >
                     <CloseIcon />
                   </IconButton>
-                  <Typography variant="h6" className={classes.title}>
-                    Sound
-                  </Typography>
-                  <Button autoFocus color="inherit" onClick={handleClose}>
-                    save
-                  </Button>
-                  {einArray.length>0 &&
-                    <UGraphs einArray={einArray}/>
-                  }
+                  
+                  <Typography>
+                    Saved Charities
+                </Typography>
                 </Toolbar>
               </AppBar>
+              {einArray.length > 0 &&
+                <UGraphs einArray={einArray} />
+              }
             </Dialog>
           </div>
         </>

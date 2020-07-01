@@ -14,7 +14,7 @@ import { Animation } from "@devexpress/dx-react-chart";
 import CharityInfo from "./CharityInfo";
 
 const UserSavedGraphs = ({ charity }) => {
-
+console.log(charity)
     // const fetchCharity = async () => {
     //   const res = await fetch(`${api}/charities/${ein}`, {
     //     method: "GET",
@@ -28,10 +28,12 @@ const UserSavedGraphs = ({ charity }) => {
     //   console.log(test.charity);
     //   setChar(test);
     // };
-  if (!charity.chart_data) return null;
+  // if (!charity.chart_data) return null;
   return (
     <Paper className="graph">
-      <Chart data={charity.chart_data} className="chart" width="650">
+      <Chart data={charity.chart_data} className="chart" 
+        width="560"
+        height="420">
         <ArgumentAxis />
         <ValueAxis />
         <BarSeries
@@ -43,9 +45,9 @@ const UserSavedGraphs = ({ charity }) => {
 
         <Title text={charity.name} color="#5785C2" />
 
-        <Animation />
+        {/* <Animation /> */}
       </Chart>
-      {/* <CharityInfo charity={charity} /> */}
+      <CharityInfo char={charity} />
     </Paper>
   );
 };

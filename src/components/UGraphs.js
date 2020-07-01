@@ -36,8 +36,8 @@ useEffect(()=>{
     einArray.forEach(async (ein) => {
         const res = await fetch(`${api}/charities/${ein}`);
         if (!res.ok) throw new Error("couldnt load featured data");
-        const test = await res.json();
-        console.log(test);
+      const test = await res.json();
+      console.log(test)
         setArray([...array, test]);
         setFetched(true)
     })

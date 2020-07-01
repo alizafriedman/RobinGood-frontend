@@ -29,7 +29,7 @@ const Home = () => {
  
   
  
-  // if (!featured) return null;
+  if (!featured) return null;
    
 
   return (
