@@ -1,43 +1,43 @@
 
-import heart from "/Users/lizziefriedman/Desktop/robinGood/robingood-frontend/src/images/heart.jpg";
-import text from "/Users/lizziefriedman/Desktop/robinGood/robingood-frontend/src/images/text.jpg";
-import hands from "/Users/lizziefriedman/Desktop/robinGood/robingood-frontend/src/images/hands.jpg";
-import love from "/Users/lizziefriedman/Desktop/robinGood/robingood-frontend/src/images/love.jpg";
-import girls from "/Users/lizziefriedman/Desktop/robinGood/robingood-frontend/src/images/girls.jpg";
-import baby from "/Users/lizziefriedman/Desktop/robinGood/robingood-frontend/src/images/baby.jpg";
+// import heart from "/images/heart.jpg";
+// import text from "/images/text.jpg";
+// import hands from "/images/hands.jpg";
+// import love from "/images/love.jpg";
+// import girls from "/images/girls.jpg";
+// import baby from "/images/baby.jpg";
 const tileData = [
   {
-    img: heart,
+    img: "/images/heart.jpg",
     title: "Image",
     author: "author",
     cols: 1,
   },
   {
-    img: text,
+    img: "/images/text.jpg",
     title: "Image",
     author: "author",
     cols: 1,
   },
   {
-    img: hands,
+    img: "/images/hands.jpg",
     title: "Image",
     author: "author",
     cols: 1,
   },
   {
-    img: love,
+    img: "/images/love.jpg",
     title: "Image",
     author: "author",
     cols: 1,
   },
   {
-    img: girls,
+    img: "/images/girls.jpg",
     title: "Image",
     author: "author",
     cols: 1,
   },
   {
-    img: baby,
+    img: "/images/baby.jpg",
     title: "Image",
     author: "author",
     cols: 1,
