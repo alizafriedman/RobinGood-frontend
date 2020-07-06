@@ -18,16 +18,14 @@ Backend for app here: [RobinGood Backend](https://github.com/alizafriedman/Robin
 
 
 ## Screenshots
-* Study flash cards!
-![Study flash cards!](https://github.com/b-tsui/Codelet-Frontend/blob/master/documentation/images/card-flip.gif?raw=true)
+* Search by term
+![search by term gif!](https://github.com/alizafriedman/RobinGood-backend/blob/master/documentation/images/captured%20(1).gif)
 
-* Play learning games!
-![Quiz game gif](https://github.com/b-tsui/Codelet-Frontend/blob/master/documentation/images/quiz-game.gif?raw=true)
+* Search by EIN!
+![search by ein gif](https://github.com/alizafriedman/RobinGood-backend/blob/master/documentation/images/captured%20(2).gif)
 
-  ![Matching game gif](https://github.com/b-tsui/Codelet-Frontend/blob/master/documentation/images/matching-game.gif?raw=true)
 
-* Save and vote on sets!
-![favorite and voting](https://github.com/b-tsui/Codelet-Frontend/blob/master/documentation/images/set-manipulation.gif?raw=true)
+
 
 ## Technologies implented:
   - Javascript
