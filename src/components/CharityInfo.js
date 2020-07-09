@@ -64,7 +64,7 @@ const DialogActions = withStyles((theme) => ({
 function CharityInfo( {char}) {
   const [open, setOpen] = React.useState(false);
   const { user, getTokenSilently, token } = useAuth0();
-;
+
   
   const handleClickOpen = () => {
     setOpen(true);
@@ -76,6 +76,7 @@ function CharityInfo( {char}) {
   const test = async () => {
     setOpen(true)
     const token = await getTokenSilently();
+    console.log(user)
     await fetch(`${api}/users/${user.userId}`, {
       method: "PATCH",
       headers: {

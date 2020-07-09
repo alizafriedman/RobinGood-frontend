@@ -30,12 +30,18 @@ export const Auth0Provider = ({
         const { appState } = await auth0FromHook.handleRedirectCallback();
         onRedirectCallback(appState);
       }
-
-      const isAuthenticated = await auth0FromHook.isAuthenticated();
-
+      let isAuthenticated
+      // if (localStorage.getItem('user')) {
+      //   isAuthenticated = true;
+      // }
+      // else {
+        isAuthenticated = await auth0FromHook.isAuthenticated();
+      // }
+      console.log(isAuthenticated)
       setIsAuthenticated(isAuthenticated);
 
       if (isAuthenticated) {
+
         const user = await auth0FromHook.getUser();
         console.log(user)
         let token = await auth0FromHook.getTokenSilently();
@@ -50,6 +56,7 @@ export const Auth0Provider = ({
         });
         //fetch path on user on the backend
         const response = await res.json();
+        // debugger
         setUser({ ...user, userId: response.userId });
       }
 
@@ -71,6 +78,7 @@ export const Auth0Provider = ({
     const user = await auth0Client.getUser();
     setUser(user);
     setIsAuthenticated(true);
+    localStorage.setItem('user', user)
   };
 
   const handleRedirectCallback = async () => {

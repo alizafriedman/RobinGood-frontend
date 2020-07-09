@@ -16,7 +16,9 @@ import Home from "./Home";
 import MiniGraph from "./MiniGraph";
 import { api } from "../config";
 import UserSavedGraphs from './UserSavedGraphs'
- import { useAuth0 } from "../react-auth0-spa";
+import { useAuth0 } from "../react-auth0-spa";
+import querystring from "query-string";
+ 
 
 const UGraphs = ({ einArray }) => {
     const [array, setArray] = useState([]);
@@ -33,19 +35,22 @@ console.log(einArray)
 
 useEffect(()=>{
   const loadCharities = async() =>{
-    einArray.forEach(async (ein) => {
-        const res = await fetch(`${api}/charities/${ein}`);
-        if (!res.ok) throw new Error("couldnt load featured data");
-      const test = await res.json();
-      console.log(test)
-        setArray([...array, test]);
-        setFetched(true)
-    })
-    
-
+    // einArray.forEach(async (ein) => {
+    //     const res = await fetch(`${api}/charities/${ein}`);
+    //     if (!res.ok) throw new Error("couldnt load featured data");
+    //   const test = await res.json();
+    //   console.log(test)
+    //     setArray([...array, test]);
+    //     setFetched(true)
+    // })
+   let queryString = querystring.stringify({'eins': einArray}, {'arrayFormat': "bracket"})
+    const res = await fetch(`${api}/charities/bulk?${queryString}`)
+    const result = await res.json()
+    console.log(result.banana)
+    setArray(result.banana)
   }
   loadCharities()
-  console.log(array);
+  // console.log(array);
 },[])
 
 
