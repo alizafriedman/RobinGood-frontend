@@ -55,28 +55,7 @@ useEffect(()=>{
 
 
     
-//   useEffect(() => {
-//     const graphs = async () => {
-//       const res = await fetch(`${api}/charities/${ein}`);
-//       const result = await res.json();
-//       setArray(result.charities);
-//     };
-//     graphs();
-//   }, []);
 
-    //   const fetchCharity = async () => {
-    //     const res = await fetch(`${api}/charities/${ein}`, {
-    //       method: "GET",
-    //       headers: {
-    //         "Content-Type": "application/json",
-    //       },
-    //     });
-
-    //     if (!res.ok) throw new Error("couldnt load featured data");
-    //     const test = await res.json();
-    //     console.log(test.charity);
-    //     setArray(test);
-    //   };
  
     return (
       <>

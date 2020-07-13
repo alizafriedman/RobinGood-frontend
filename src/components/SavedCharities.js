@@ -66,7 +66,7 @@ function SavedCharities() {
   
       setOpen(true);
       fetchSaved();
-    setLoaded(true)
+    // setLoaded(true)
     
     
           console.log(einArray);

@@ -9,6 +9,7 @@ import DialogTitle from "@material-ui/core/DialogTitle";
 import { api } from "../config";
 import FullPageCharity from './FullPageCharity'
 import "../styles/searchDialog.css";
+import Loading from './Loading'
 function SearchDialog() {
     const [open, setOpen] = React.useState(false);
     const [ein, setEin] = React.useState()
@@ -49,13 +50,13 @@ function SearchDialog() {
          });
 
          if (!res.ok) throw new Error("couldnt load featured data");
-         const banana = await res.json();
-            console.log(banana)
-         setSearch(banana[0]);
+         const charTerm = await res.json();
+            console.log(charTerm)
+         setSearch(charTerm[0]);
        };
     
     const handleCloseEin = () => {
-       setOpen(false);
+      setOpen(false);
        fetchCharity();
     };
     

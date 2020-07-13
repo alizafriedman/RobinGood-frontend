@@ -33,19 +33,20 @@ const [char, setChar] = useState();
           <Chart
         data={charity.chart_data}
         className="chart"
-        width="320"
-        height="420"
-        resolveLabelOverlapping="stack"
+        width="480"
+        height="640"
+        // resolveLabelOverlapping="stack"
         
       >
-        <ArgumentAxis/>
+        <ArgumentAxis />
         <ValueAxis  />
         <BarSeries
           valueField="y"
           argumentField="x"
           color="#5785C2"
           barWidth="1"
-          size='5px'
+          size='10px'
+          textWrapping='Wrap'
         />
 
         <Title text={charity.name} className='apple' />
