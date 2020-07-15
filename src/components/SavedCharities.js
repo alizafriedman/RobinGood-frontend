@@ -21,7 +21,7 @@ const useStyles = makeStyles((theme) => ({
   },
   title: {
     marginLeft: theme.spacing(2),
-    flex: 1,
+    flex: 3,
   },
 }));
 
@@ -53,9 +53,9 @@ function SavedCharities() {
        });
 
        if (!res.ok) throw new Error("couldnt load featured data");
-      const test = await res.json();
-      console.log(test.charity)
-      setEinArray(test.charity);
+      const banana = await res.json();
+      console.log(banana.charity)
+      setEinArray(banana.charity);
     };
   
 

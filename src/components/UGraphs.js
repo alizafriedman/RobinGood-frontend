@@ -45,6 +45,7 @@ useEffect(()=>{
     // })
    let queryString = querystring.stringify({'eins': einArray}, {'arrayFormat': "bracket"})
     const res = await fetch(`${api}/charities/bulk?${queryString}`)
+    console.log(res)
     const result = await res.json()
     console.log(result.banana)
     setArray(result.banana)

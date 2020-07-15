@@ -126,7 +126,8 @@ const NavBar = () => {
             </span> */}
           )}
           {isAuthenticated && (
-            <Button style={{ color: "primary" }} onClick={() => logout()}>
+            <Button style={{ color: "primary" }}
+              onClick={() => logout()}>
               Log out
             </Button>
           )}
