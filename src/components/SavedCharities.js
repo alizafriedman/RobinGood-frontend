@@ -41,9 +41,10 @@ function SavedCharities() {
 
   
 
-
+  // if (!token) return null;
+  
     const fetchSaved = async () => {
-               const token = await getTokenSilently();
+        const token = await getTokenSilently();
        const res = await fetch(`${api}/users/${user.userId}`, {
          method: "GET",
          headers: {
@@ -62,11 +63,10 @@ function SavedCharities() {
 
   
   const handleClickOpen = (e) => {
-    e.preventDefault()
-  
-      setOpen(true);
-      fetchSaved();
-    // setLoaded(true)
+    // e.preventDefault()
+    setOpen(true);
+    fetchSaved();
+    setLoaded(true)
     
     
           console.log(einArray);

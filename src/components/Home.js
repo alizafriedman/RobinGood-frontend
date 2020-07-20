@@ -25,7 +25,7 @@ const Home = () => {
         console.error(error);
       }
     })();
-  }, [loading]);
+  }, [loading, getTokenSilently, user]);
  
   
  console.log(featured)

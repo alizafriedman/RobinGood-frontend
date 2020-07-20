@@ -49,7 +49,7 @@ const [char, setChar] = useState();
           textWrapping='Wrap'
         />
 
-        <Title text={charity.name} className='apple' />
+        <Title text={charity.name} />
 
         <Animation />
       </Chart>
