@@ -33,18 +33,22 @@ function SavedCharities() {
   const classes = useStyles();
     const [open, setOpen] = React.useState(false);
     const [saved, setSaved] = React.useState([])
-      const { user, getTokenSilently, token, loading } = useAuth0();
+      const { user, getTokenSilently, token, isAuthenticated, loading } = useAuth0();
   const [einArray, setEinArray] = React.useState([]);
   const [char, setChar] = React.useState()
    const [fetched, setFetched] = useState(false);
-   const [loaded, setLoaded] = useState(false);
+  const [loaded, setLoaded] = useState(false);
+  // const [user, setUser] = useState();
+  const [test, setTest] = React.useState(user)
+
 
   
 
   // if (!token) return null;
-  
+  console.log(user.userId)
     const fetchSaved = async () => {
-        const token = await getTokenSilently();
+      const token = await getTokenSilently();
+      console.log(token, user.userId)
        const res = await fetch(`${api}/users/${user.userId}`, {
          method: "GET",
          headers: {
@@ -53,24 +57,35 @@ function SavedCharities() {
          },
        });
 
-       if (!res.ok) throw new Error("couldnt load featured data");
-      const banana = await res.json();
-      console.log(banana.charity)
+       
+      if (!res.ok) throw new Error("couldnt load featured data");
+      // console.log('banana', res)
+       const banana = await res.json();
       setEinArray(banana.charity);
+      // setUser(user)
+      // setFetched(true)
     };
   
 
 
-  
-  const handleClickOpen = (e) => {
-    // e.preventDefault()
-    setOpen(true);
-    fetchSaved();
-    setLoaded(true)
-    
-    
-          console.log(einArray);
 
+  
+  const handleClickOpen = () => {
+    if (!user.userId) {
+      return alert("oops! something went wrong. Please refresh the page")
+    }
+
+    // else if (!einArray.length) {
+    //   console.log(einArray)
+    //   return alert("please add a charity first")
+    // }
+    
+    // console.log(banana.charity)
+      setOpen(true);
+    fetchSaved();
+
+
+      setLoaded(true)
   };
 
     const handleClose = () => {   
@@ -109,8 +124,7 @@ function SavedCharities() {
                 </Toolbar>
               </AppBar>
               {einArray.length > 0 &&
-                <UGraphs einArray={einArray} />
-              }
+                <UGraphs einArray={einArray} />}
             </Dialog>
           </div>
         </>

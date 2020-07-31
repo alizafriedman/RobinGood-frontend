@@ -98,7 +98,7 @@ const NavBar = () => {
             </div>
           </Typography>
           <SearchDialog />
-          {isAuthenticated && (
+          {user && (
             <SavedCharities />
           )}
           {!isAuthenticated && (

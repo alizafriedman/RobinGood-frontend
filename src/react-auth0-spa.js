@@ -63,7 +63,7 @@ export const Auth0Provider = ({
     };
     initAuth0();
     // eslint-disable-next-line
-  }, []);
+  }, [isAuthenticated]);
 
   const loginWithPopup = async (params = {}) => {
     setPopupOpen(true);
@@ -76,17 +76,19 @@ export const Auth0Provider = ({
     }
     const user = await auth0Client.getUser();
     setUser(user);
-    setIsAuthenticated(true);
+    
     localStorage.setItem('user', user)
+    setIsAuthenticated(true);
   };
 
   const handleRedirectCallback = async () => {
     setLoading(true);
     await auth0Client.handleRedirectCallback();
     const user = await auth0Client.getUser();
-    setLoading(false);
+    setLoading(true);
     setIsAuthenticated(true);
     setUser(user);
+    
   };
   return (
     <Auth0Context.Provider

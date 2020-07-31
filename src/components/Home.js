@@ -13,6 +13,7 @@ import HomeImage from './HomeImage'
 const Home = () => {
   const { user, loading, getTokenSilently, isAuthenticated } = useAuth0();
   const [featured, setFeatured] = useState();
+  const [fetch, setFetched] = useState(false)
   
 
   
@@ -21,14 +22,15 @@ const Home = () => {
       try {
         const featCharity = await fetchFeaturedCharity();
         setFeatured(featCharity);
+        setFetched(true)
       } catch (error) {
         console.error(error);
       }
     })();
-  }, [loading, getTokenSilently, user]);
+  }, [user, isAuthenticated]);
  
-  
- console.log(featured)
+  // console.log(loading)
+//  console.log(user)
   if (!featured) return null;
    
 
