@@ -8,6 +8,7 @@ import CharityInfo from './CharityInfo'
 import { fetchFeaturedCharity, fetchCharity } from "../services/charities";
 import "../styles/home.css";
 import HomeImage from './HomeImage'
+import DemoCard from './DemoCard'
 
 
 const Home = () => {
@@ -54,7 +55,10 @@ const Home = () => {
               
             </Typography> */}
             <HomeImage />
-            <Graph featured={featured[0]} />
+            <div className="upper-page">
+            <DemoCard />
+              <Graph featured={featured[0]} />
+            </div>
             <div className="lower-page">
               <MGraphs className="mini-graphs" />
             </div>

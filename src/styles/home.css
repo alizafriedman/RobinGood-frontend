@@ -5,6 +5,11 @@
 #home-content{
     width: 50vw
 }
+.upper-page {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row-reverse;
+}
 .lower-page {
     display: flex;
     justify-content: space-between;
