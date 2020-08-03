@@ -1,6 +1,6 @@
 // import * as React from "react";
 import React from "react";
-import "../styles/graph.css";
+import "../styles/profileGraph.css";
 import Paper from "@material-ui/core/Paper";
 import {
   Chart,
@@ -30,7 +30,7 @@ console.log(charity)
     // };
   // if (!charity.chart_data) return null;
   return (
-    <Paper className="graph">
+    <Paper className="saved">
       <Chart data={charity.chart_data} className="chart" 
         width="560"
         height="420">

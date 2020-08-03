@@ -33,7 +33,7 @@ const [char, setChar] = useState();
           <Chart
         data={charity.chart_data}
         className="chart"
-        width="480"
+        width="470"
         height="640"
         // resolveLabelOverlapping="stack"
         

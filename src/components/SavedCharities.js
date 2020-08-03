@@ -2,6 +2,10 @@ import React, {useState} from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
 import Dialog from "@material-ui/core/Dialog";
+import DialogActions from '@material-ui/core/DialogActions';
+import DialogContent from '@material-ui/core/DialogContent';
+import DialogContentText from '@material-ui/core/DialogContentText';
+import DialogTitle from '@material-ui/core/DialogTitle';
 import ListItemText from "@material-ui/core/ListItemText";
 import ListItem from "@material-ui/core/ListItem";
 import List from "@material-ui/core/List";
@@ -14,7 +18,11 @@ import CloseIcon from "@material-ui/icons/Close";
 import Slide from "@material-ui/core/Slide";
 import { useAuth0 } from "../react-auth0-spa";
 import { api } from "../config";
-import UGraphs from './UGraphs'
+import UGraphs from './UGraphs';
+import "../styles/profileGraph.css";
+import Box from '@material-ui/core/Box';
+
+
 const useStyles = makeStyles((theme) => ({
   appBar: {
     position: "relative",
@@ -40,15 +48,17 @@ function SavedCharities() {
   const [loaded, setLoaded] = useState(false);
   // const [user, setUser] = useState();
   const [test, setTest] = React.useState(user)
+  const [scroll, setScroll] = React.useState('paper');
+
 
 
   
 
   // if (!token) return null;
-  console.log(user.userId)
+  // console.log(user.userId)
     const fetchSaved = async () => {
       const token = await getTokenSilently();
-      console.log(token, user.userId)
+      // console.log(token, user.userId)
        const res = await fetch(`${api}/users/${user.userId}`, {
          method: "GET",
          headers: {
@@ -67,10 +77,13 @@ function SavedCharities() {
     };
   
 
-
+  // const handleClickO = (scrollType) => () => {
+  //   setOpen(true);
+  //   setScroll(scrollType);
+  // };
 
   
-  const handleClickOpen = () => {
+  const handleClickOpen = (scrollType) => {
     if (!user.userId) {
       return alert("oops! something went wrong. Please refresh the page")
     }
@@ -81,7 +94,9 @@ function SavedCharities() {
     // }
     
     // console.log(banana.charity)
-      setOpen(true);
+    setOpen(true);
+    // setScroll(scrollType);
+
     fetchSaved();
 
 
@@ -106,6 +121,8 @@ function SavedCharities() {
               open={open}
               onClose={handleClose}
               TransitionComponent={Transition}
+              className="scroll"
+              
             >
               <AppBar className={classes.appBar}>
                 <Toolbar>
@@ -123,8 +140,10 @@ function SavedCharities() {
                 </Typography>
                 </Toolbar>
               </AppBar>
+              <div className="saved" >
               {einArray.length > 0 &&
-                <UGraphs einArray={einArray} />}
+                  <UGraphs einArray={einArray} />}
+              </div>
             </Dialog>
           </div>
         </>

@@ -1,0 +1,38 @@
+
+/* .scroll {
+    overflow: wrap;
+} */
+
+/* 
+.saved {
+    display: flex;
+    /* max-width: 75vw;
+    max-height: 300px; */
+    /* flex-wrap: wrap; */
+    /* flex-flow: wrap;
+    flex-grow: 2; */
+    /* justify-content: flex-end; */
+    /* flex-direction: column; */
+    /* overflow: wrap; */
+    /* overflow-wrap: normal; */
+    /* overflow: scroll; */
+/* } */ 
+
+element.style {
+    overflow: scroll;
+}
+
+
+.saved {
+    display: flex;
+    /* flex-wrap: wrap; */
+    /* flex-flow: wrap; */
+    flex-grow: 2;
+    justify-content: flex-end;
+    /* flex-direction: column; */
+    /* overflow-wrap: normal; */
+    overflow: scroll;
+    /* max-block-size: max-content; */
+    max-height: fit-content;
+    max-width: fit-content;
+}

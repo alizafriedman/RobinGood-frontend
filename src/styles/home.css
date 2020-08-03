@@ -3,20 +3,24 @@
 }
 
 #home-content{
-    width: 50vw
+    width: 45vw
 }
 .upper-page {
     display: flex;
     justify-content: space-between;
     flex-direction: row-reverse;
+    margin: 20px
 }
 .lower-page {
     display: flex;
     justify-content: space-between;
+    margin: 10px;
+    padding: 10px
 }
 
 .mini-graphs {
     flex-direction: row;
+    margin: 20px
     
 }
 

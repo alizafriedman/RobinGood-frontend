@@ -20,6 +20,7 @@ a:-webkit-any-link {
   letter-spacing: 2px;
   width: 130px;
   color: #141D42;
+  margin: 10px
 }
 
 .MuiButton-root {
