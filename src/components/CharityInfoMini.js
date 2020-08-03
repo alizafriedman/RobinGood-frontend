@@ -63,7 +63,9 @@ const DialogActions = withStyles((theme) => ({
 function CharityInfoMini({
   charity
 }) {
-    const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = React.useState(false);
+  const [clicked, setClicked] = React.useState(false)
+  const [clickDelete, setClickDelete] = React.useState(false)
     const { user, getTokenSilently, token } = useAuth0();
   const handleClickOpen = () => {
     setOpen(true);
@@ -73,7 +75,7 @@ function CharityInfoMini({
   };
 
   const addToProfile = async () => {
-console.log(charity.ein)
+// console.log(charity.ein)
     const token = await getTokenSilently();
     await fetch(`${api}/users/${user.userId}`, {
       method: "PATCH",
@@ -86,9 +88,27 @@ console.log(charity.ein)
       })
     });
     setOpen(false)
+    setClicked(true)
+    setClickDelete(true)
 
   }
     
+  const deleteFromProfile = async () => {
+    const token = await getTokenSilently();
+    await fetch(`${api}/users/${user.userId}`, {
+      method: "DELETE",
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        charity_id: charity.ein
+      })
+    });
+    setOpen(false)
+    setClicked(false)
+    setClickDelete(false)
+}
 
   return (
     <div>
@@ -119,9 +139,17 @@ console.log(charity.ein)
           </a>
         </DialogContent>
         <DialogActions>
-          <Button autoFocus onClick={addToProfile} color="secondary">
-            Add Charity
+          {!clicked && (
+          <Button autoFocus onClick={addToProfile} color="secondary" className="add">
+              Add Charity
           </Button>
+          )}
+          {clickDelete && (
+            <Button autoFocus onClick={deleteFromProfile} color="secondary" className="add">
+              Delete Charity
+            </Button>
+          )}
+
           <Button autoFocus onClick={handleClose} color="secondary">
             Close
           </Button>
