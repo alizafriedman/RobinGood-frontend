@@ -13,7 +13,7 @@ import {
 } from "@devexpress/dx-react-chart-material-ui";
 import { Palette } from "@devexpress/dx-react-chart";
 import { Animation } from "@devexpress/dx-react-chart";
-import CharityInfoMini from "./CharityInfoMini";
+import CharityInfo from "./CharityInfo";
 import { fetchCharity } from '../services/charities'
 import Home from './Home'
 import MGraphs from './MGraphs'
@@ -53,8 +53,8 @@ const [char, setChar] = useState();
 
         <Animation />
       </Chart>
-      <CharityInfoMini className='test'
-       charity={charity}
+      <CharityInfo className='test'
+       char={charity}
       />
     </Paper>
   );

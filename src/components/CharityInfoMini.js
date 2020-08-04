@@ -14,6 +14,7 @@ import { api } from "../config";
 import Home from "./Home";
 import { useAuth0 } from "../react-auth0-spa";
 import "../styles/charityInfoMini.css";
+import SavedCharities from "./SavedCharities";
 
 
 const styles = (theme) => ({
@@ -64,9 +65,14 @@ function CharityInfoMini({
   charity
 }) {
   const [open, setOpen] = React.useState(false);
-  const [clicked, setClicked] = React.useState(false)
+  const [clicked, setClicked] = React.useState(true)
   const [clickDelete, setClickDelete] = React.useState(false)
-    const { user, getTokenSilently, token } = useAuth0();
+  const { user, getTokenSilently, token } = useAuth0();
+  const [einArray, setEinArray] = React.useState([]);
+  const [fetch, setFetched] = React.useState(false)
+
+
+
   const handleClickOpen = () => {
     setOpen(true);
   };
@@ -90,9 +96,10 @@ function CharityInfoMini({
     setOpen(false)
     setClicked(true)
     setClickDelete(true)
+    // window.location.href = `${}`
 
   }
-    
+
   const deleteFromProfile = async () => {
     const token = await getTokenSilently();
     await fetch(`${api}/users/${user.userId}`, {
@@ -105,9 +112,10 @@ function CharityInfoMini({
         charity_id: charity.ein
       })
     });
+    alert('charity has been deleted')
     setOpen(false)
     setClicked(false)
-    setClickDelete(false)
+    setClickDelete(true)
 }
 
   return (
@@ -144,11 +152,12 @@ function CharityInfoMini({
               Add Charity
           </Button>
           )}
-          {clickDelete && (
+          {!clickDelete && (
             <Button autoFocus onClick={deleteFromProfile} color="secondary" className="add">
               Delete Charity
             </Button>
           )}
+
 
           <Button autoFocus onClick={handleClose} color="secondary">
             Close

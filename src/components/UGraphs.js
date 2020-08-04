@@ -25,6 +25,8 @@ const UGraphs = ({ einArray }) => {
     let [ein, setEin] = React.useState()
      const [fetched, setFetched] = useState(false);
   const [loaded, setLoaded] = useState(false);
+  const [click, setClick] = React.useState(false)
+  const [clickDelete, setClickDelete] = React.useState(false)
   // const [einArray, setEinArray] = React.useState();
 
   const { user, getTokenSilently, token, loading } = useAuth0();
@@ -45,10 +47,11 @@ useEffect(()=>{
     // })
    let queryString = querystring.stringify({'eins': einArray}, {'arrayFormat': "bracket"})
     const res = await fetch(`${api}/charities/bulk?${queryString}`)
-    console.log(res)
+    // console.log(res)
     const result = await res.json()
-    console.log(result.banana)
+    // console.log(result.banana)
     setArray(result.banana)
+    setClick(true)
   }
   loadCharities()
   // console.log(array);

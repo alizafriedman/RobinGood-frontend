@@ -11,24 +11,10 @@ import {
 } from "@devexpress/dx-react-chart-material-ui";
 import { Palette } from "@devexpress/dx-react-chart";
 import { Animation } from "@devexpress/dx-react-chart";
-import CharityInfo from "./CharityInfo";
+import CharityInfoMini from "./CharityInfoMini";
 
 const UserSavedGraphs = ({ charity }) => {
-console.log(charity)
-    // const fetchCharity = async () => {
-    //   const res = await fetch(`${api}/charities/${ein}`, {
-    //     method: "GET",
-    //     headers: {
-    //       "Content-Type": "application/json",
-    //     },
-    //   });
 
-    //   if (!res.ok) throw new Error("couldnt load featured data");
-    //   const test = await res.json();
-    //   console.log(test.charity);
-    //   setChar(test);
-    // };
-  // if (!charity.chart_data) return null;
   return (
     <Paper className="saved">
       <Chart data={charity.chart_data} className="chart" 
@@ -47,7 +33,7 @@ console.log(charity)
 
         {/* <Animation /> */}
       </Chart>
-      <CharityInfo char={charity} />
+      <CharityInfoMini charity={charity} />
     </Paper>
   );
 };

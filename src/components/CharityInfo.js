@@ -63,11 +63,14 @@ const DialogActions = withStyles((theme) => ({
 
 function CharityInfo( {char}) {
   const [open, setOpen] = React.useState(false);
+  const [clicked, setClicked] = React.useState(false)
+  const [clickDelete, setClickDelete] = React.useState(false)
   const { user, getTokenSilently, token } = useAuth0();
 
   
   const handleClickOpen = () => {
     setOpen(true);
+    
   };
   const handleClose = () => {
     setOpen(false);
@@ -75,8 +78,9 @@ function CharityInfo( {char}) {
 
   const test = async () => {
     setOpen(true)
+
     const token = await getTokenSilently();
-    console.log(user)
+    // console.log(user)
     await fetch(`${api}/users/${user.userId}`, {
       method: "PATCH",
       headers: {
@@ -88,7 +92,26 @@ function CharityInfo( {char}) {
       })
     });
     setOpen(false)
+    setClicked(true)
+    setClickDelete(true)
 
+  }
+
+  const deleteFromProfile = async () => {
+    const token = await getTokenSilently();
+    await fetch(`${api}/users/${user.userId}`, {
+      method: "DELETE",
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        charity_id: char.ein
+      })
+    });
+    setOpen(false)
+    setClicked(false)
+    setClickDelete(false)
   }
 
   return (
@@ -120,9 +143,16 @@ function CharityInfo( {char}) {
           <a href={char.donate_link} color='secondary'>{char.donate_link}</a>
         </DialogContent>
         <DialogActions>
-          <Button autoFocus onClick={test} color="secondary">
-            Add Charity
-          </Button>
+          {!clicked && (
+            <Button autoFocus onClick={test} color="secondary" className="add">
+              Add Charity
+            </Button>
+          )}
+          {clickDelete && (
+            <Button autoFocus onClick={deleteFromProfile} color="secondary" className="add">
+              Delete Charity
+            </Button>
+          )}
           <Button autoFocus onClick={handleClose} color="secondary">
             Close
           </Button>

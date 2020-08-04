@@ -77,10 +77,6 @@ function SavedCharities() {
     };
   
 
-  // const handleClickO = (scrollType) => () => {
-  //   setOpen(true);
-  //   setScroll(scrollType);
-  // };
 
   
   const handleClickOpen = (scrollType) => {
@@ -96,10 +92,7 @@ function SavedCharities() {
     // console.log(banana.charity)
     setOpen(true);
     // setScroll(scrollType);
-
     fetchSaved();
-
-
       setLoaded(true)
   };
 
@@ -122,6 +115,7 @@ function SavedCharities() {
               onClose={handleClose}
               TransitionComponent={Transition}
               className="scroll"
+              scroll="paper"
               
             >
               <AppBar className={classes.appBar}>

@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <title>Sign In with Auth0</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+</head>
+<style>
+    body,
+    html {
+        height: 100%;
+        background-color: #383838;
+        background-image: url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%2300897b' fill-opacity='0.4'%3E%3Cpath d='M50 50c0-5.523 4.477-10 10-10s10 4.477 10 10-4.477 10-10 10c0 5.523-4.477 10-10 10s-10-4.477-10-10 4.477-10 10-10zM10 10c0-5.523 4.477-10 10-10s10 4.477 10 10-4.477 10-10 10c0 5.523-4.477 10-10 10S0 25.523 0 20s4.477-10 10-10zm10 8c4.418 0 8-3.582 8-8s-3.582-8-8-8-8 3.582-8 8 3.582 8 8 8zm40 40c4.418 0 8-3.582 8-8s-3.582-8-8-8-8 3.582-8 8 3.582 8 8 8z' /%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    }
+
+    .login-container {
+        position: relative;
+        height: 100%;
+        color: hsla(0, 0%, 100%, 0.8);
+    }
+
+    .login-box {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        padding: 15px;
+        background-color: #383838;
+        box-shadow: 0px 5px 5px #000000;
+        border-radius: 5px;
+        border-top: 1px solid #000000;
+    }
+
+    .login-header {
+        text-align: center;
+        color: hsla(0, 0%, 100%, 0.8);
+    }
+
+    .login-header img {
+        width: 75px;
+    }
+
+    #btn-login {
+        background-color: #00897b;
+    }
+
+    .btn-demo {
+        background-color: #3f51b5;
+    }
+
+    #error-message {
+        display: none;
+    }
+</style>
+
+<body>
+    <div class="login-container">
+        <div class="col-xs-12 col-sm-4 col-sm-offset-4 login-box">
+            <div class="login-header">
+                <img src="https://clackurbucket.s3.us-east-2.amazonaws.com/1591983801561" />
+                <h3>Welcome</h3>
+                <h5>PLEASE LOG IN</h5>
+            </div>
+            <div id="error-message" class="alert alert-danger"></div>
+            <form onsubmit="return false;" method="post">
+                <div class="form-group">
+                    <label for="name">Email</label>
+                    <input type="email" class="form-control" id="email" placeholder="Enter your email" />
+                </div>
+                <div class="form-group">
+                    <label for="name">Password</label>
+                    <input type="password" class="form-control" id="password" placeholder="Enter your password" />
+                </div>
+                <button type="submit" id="btn-login" class="btn btn-primary btn-block">
+                    Log In
+                </button>
+                <button type="button" id="btn-signup" class="btn btn-default btn-block">
+                    Sign Up
+                </button>
+                <button type="submit" id="btn-demo" class="btn btn-demo btn-block">
+                    Demo Login
+                </button>
+                <hr />
+                <button type="button" id="btn-google" class="btn btn-default btn-danger btn-block">
+                    Log In with Google
+                </button>
+            </form>
+        </div>
+    </div>
+    <!--[if IE 8]>
+      <script src="//cdnjs.cloudflare.com/ajax/libs/ie8/0.2.5/ie8.js"></script>
+    <![endif]-->
+    <!--[if lte IE 9]>
+      <script src="https://cdn.auth0.com/js/polyfills/1.0/base64.min.js"></script>
+      <script src="https://cdn.auth0.com/js/polyfills/1.0/es5-shim.min.js"></script>
+    <![endif]-->
+    <script src="https://cdn.auth0.com/js/auth0/9.13/auth0.min.js"></script>
+    <script src="https://cdn.auth0.com/js/polyfills/1.0/object-assign.min.js"></script>
+    <script>
+        window.addEventListener("load", function () {
+            var config = JSON.parse(
+                decodeURIComponent(escape(window.atob("@@config@@")))
+            );
+            var params = Object.assign(
+                {
+                    /* additional configuration needed for use of custom domains
+                overrides: {
+                  __tenant: config.auth0Tenant,
+                  __token_issuer: 'YOUR_CUSTOM_DOMAIN'
+                }, */
+                    domain: config.auth0Domain,
+                    clientID: config.clientID,
+                    redirectUri: config.callbackURL,
+                    responseType: "code",
+                },
+                config.internalOptions
+            );
+            var webAuth = new auth0.WebAuth(params);
+            var databaseConnection = "Username-Password-Authentication";
+            function login(e) {
+                e.preventDefault();
+                var username = document.getElementById("email").value;
+                var password = document.getElementById("password").value;
+                webAuth.login(
+                    {
+                        realm: databaseConnection,
+                        username: username,
+                        password: password,
+                    },
+                    function (err) {
+                        if (err) displayError(err);
+                    }
+                );
+            }
+            function demoLogin(e) {
+                e.preventDefault();
+                var username = "demo@demo.com";
+                var password = "demo123!";
+                webAuth.login(
+                    {
+                        realm: databaseConnection,
+                        username: username,
+                        password: password,
+                    },
+                    function (err) {
+                        if (err) displayError(err);
+                    }
+                );
+            }
+            function signup() {
+                var email = document.getElementById("email").value;
+                var password = document.getElementById("password").value;
+                webAuth.redirect.signupAndLogin(
+                    {
+                        connection: databaseConnection,
+                        email: email,
+                        username: email,
+                        password: password,
+                    },
+                    function (err) {
+                        if (err) displayError(err);
+                    }
+                );
+            }
+            function loginWithGoogle() {
+                webAuth.authorize(
+                    {
+                        connection: "google-oauth2",
+                    },
+                    function (err) {
+                        if (err) displayError(err);
+                    }
+                );
+            }
+            function displayError(err) {
+                var errorMessage = document.getElementById("error-message");
+                var errorRules = [
+                    { message: "At least 8 characters in length" },
+                    {
+                        message:
+                            "Contain at least 3 of the following 4 types of characters:",
+                    },
+                ];
+                var errorTypes = [
+                    { message: "lower case letters (a-z)" },
+                    { message: "upper case letters (A-Z)" },
+                    { message: "special characters (e.g. !@#$%^&*)" },
+                    { message: "numbers (i.e. 0-9)" },
+                ];
+                var errorHTML;
+                if (err.code === "invalid_password") {
+                    errorHTML =
+                        "<ul>" +
+                        errorRules
+                            .map((rule) => {
+                                return `<li>${rule.message}</li>`;
+                            })
+                            .join("") +
+                        "<ul>" +
+                        errorTypes
+                            .map((type) => {
+                                return `<li>${type.message}</li>`;
+                            })
+                            .join("") +
+                        "</ul>" +
+                        "</ul>";
+                } else {
+                    errorHTML = err.description;
+                }
+                errorMessage.innerHTML = errorHTML;
+                errorMessage.style.display = "block";
+            }
+
+            document.getElementById("btn-login").addEventListener("click", login);
+            document
+                .getElementById("btn-google")
+                .addEventListener("click", loginWithGoogle);
+            document.getElementById("btn-signup").addEventListener("click", signup);
+            document
+                .getElementById("btn-demo")
+                .addEventListener("click", demoLogin);
+        });
+    </script>
+</body>
+
+</html>
