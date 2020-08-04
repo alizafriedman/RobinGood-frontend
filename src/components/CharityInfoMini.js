@@ -14,7 +14,6 @@ import { api } from "../config";
 import Home from "./Home";
 import { useAuth0 } from "../react-auth0-spa";
 import "../styles/charityInfoMini.css";
-import SavedCharities from "./SavedCharities";
 
 
 const styles = (theme) => ({
@@ -69,7 +68,6 @@ function CharityInfoMini({
   const [clickDelete, setClickDelete] = React.useState(false)
   const { user, getTokenSilently, token } = useAuth0();
   const [einArray, setEinArray] = React.useState([]);
-  const [fetch, setFetched] = React.useState(false)
 
 
 
@@ -115,7 +113,8 @@ function CharityInfoMini({
     alert('charity has been deleted')
     setOpen(false)
     setClicked(false)
-    setClickDelete(true)
+    setClickDelete(true)    
+
 }
 
   return (
@@ -158,6 +157,7 @@ function CharityInfoMini({
             </Button>
           )}
 
+          
 
           <Button autoFocus onClick={handleClose} color="secondary">
             Close

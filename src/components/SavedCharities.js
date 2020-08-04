@@ -72,6 +72,11 @@ function SavedCharities() {
       // console.log('banana', res)
        const banana = await res.json();
       setEinArray(banana.charity);
+      // console.log(banana.charity)
+      // if (!banana.charity.length) {
+      //   // console.log(einArray)
+      //   return alert("please add a charity first")
+      // }
       // setUser(user)
       // setFetched(true)
     };
@@ -79,21 +84,14 @@ function SavedCharities() {
 
 
   
-  const handleClickOpen = (scrollType) => {
+  const handleClickOpen = () => {
     if (!user.userId) {
       return alert("oops! something went wrong. Please refresh the page")
     }
 
-    // else if (!einArray.length) {
-    //   console.log(einArray)
-    //   return alert("please add a charity first")
-    // }
-    
-    // console.log(banana.charity)
-    setOpen(true);
-    // setScroll(scrollType);
     fetchSaved();
-      setLoaded(true)
+    setOpen(true);
+    setLoaded(true)
   };
 
     const handleClose = () => {   
