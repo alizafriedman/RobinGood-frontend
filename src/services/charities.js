@@ -9,9 +9,7 @@ export const fetchFeaturedCharity = async () => {
       "Content-Type": "application/json",
     },
   });
-    // console.log(res)
   if (!res.ok) throw new Error('couldnt load featured data');
-  console.log(res)
     return await res.json();
 };
 
@@ -23,20 +21,18 @@ export const fetchCharity = async (charity_id) => {
         "Content-Type": "application/json",
       },
     });
-    console.log(res);
     if (!res.ok) throw new Error("couldnt load featured data");
     return await res.json();
 }
 
 
-export const apple = async (user_id) => {
-  const res = await fetch(`${api}/users/${user_id}`, {
-    method: "GET",
-    headers: {
-      "Content-Type": "application/json",
-    },
-  });
-  console.log(res);
-  if (!res.ok) throw new Error("couldnt load featured data");
-  return await res.json();
-};
+// export const apple = async (user_id) => {
+//   const res = await fetch(`${api}/users/${user_id}`, {
+//     method: "GET",
+//     headers: {
+//       "Content-Type": "application/json",
+//     },
+//   });
+//   if (!res.ok) throw new Error("couldnt load featured data");
+//   return await res.json();
+// };

@@ -35,8 +35,10 @@ function DemoCard() {
             <CardContent>
                 <Typography className={classes.title} color="textSecondary" gutterBottom>
                     Hi! To log in as a demo user, please select the demo login option at log in <br />
-                 You can search for a particular charity by EIN or keyword, <br />
+           <br />
+           You can search for a particular charity by EIN or keyword, <br />
                      by using the search option above.   <br />
+                    <br />
                     Each graph displays important charity financials; you can view<br />
                     additional charity info such as website, location etc <br />
                     and save their information to your account as well
