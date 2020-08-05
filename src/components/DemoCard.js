@@ -34,9 +34,12 @@ function DemoCard() {
         <Card className={classes.root}>
             <CardContent>
                 <Typography className={classes.title} color="textSecondary" gutterBottom>
-                    To login as a Demo User: <br />
-                     username: demo@demo.com <br />
-                    password: Demouser123
+                    Hi! To log in as a demo user, please select the demo login option at log in <br />
+                 You can search for a particular charity by EIN or keyword, <br />
+                     by using the search option above.   <br />
+                    Each graph displays important charity financials; you can view<br />
+                    additional charity info such as website, location etc <br />
+                    and save their information to your account as well
         </Typography>
                 {/* <Typography variant="h5" component="h2">
                     be{bull}nev{bull}o{bull}lent

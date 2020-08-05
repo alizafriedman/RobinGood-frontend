@@ -94,8 +94,6 @@ function CharityInfoMini({
     setOpen(false)
     setClicked(true)
     setClickDelete(true)
-    // window.location.href = `${}`
-
   }
 
   const deleteFromProfile = async () => {

@@ -49,8 +49,7 @@ useEffect(()=>{
     const res = await fetch(`${api}/charities/bulk?${queryString}`)
     // console.log(res)
     const result = await res.json()
-    // console.log(result.banana)
-    setArray(result.banana)
+    setArray(result.bulk_list)
     setClick(true)
   }
   loadCharities()
