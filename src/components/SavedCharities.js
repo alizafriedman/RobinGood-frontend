@@ -69,8 +69,8 @@ function SavedCharities() {
 
        
       if (!res.ok) throw new Error("couldnt load featured data");
-       const banana = await res.json();
-      setEinArray(banana.charity);
+       const fetchResult = await res.json();
+      setEinArray(fetchResult.charity);
       
     };
   

@@ -1,4 +1,3 @@
-import { useAuth0 } from "../react-auth0-spa";
 import { api } from "../config";
 
 
@@ -26,13 +25,3 @@ export const fetchCharity = async (charity_id) => {
 }
 
 
-// export const apple = async (user_id) => {
-//   const res = await fetch(`${api}/users/${user_id}`, {
-//     method: "GET",
-//     headers: {
-//       "Content-Type": "application/json",
-//     },
-//   });
-//   if (!res.ok) throw new Error("couldnt load featured data");
-//   return await res.json();
-// };

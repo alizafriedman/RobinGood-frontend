@@ -73,7 +73,6 @@ function HomeGraphInfo({ donate_link, website, ein, name, city, state, zip_code,
         setOpen(false);
     };
 
-  console.log(user)
     const test = async () => {
         const token = await getTokenSilently();
         await fetch(`${api}/users/${user.userId}`, {
