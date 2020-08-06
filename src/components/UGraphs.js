@@ -32,7 +32,7 @@ const UGraphs = ({ einArray }) => {
   const { user, getTokenSilently, token, loading } = useAuth0();
 
 
-console.log(einArray)
+// console.log(einArray)
 // if (!loading) return null
 
 useEffect(()=>{
