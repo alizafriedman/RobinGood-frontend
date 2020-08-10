@@ -117,6 +117,7 @@ function CharityInfo( {char}) {
     setOpen(false)
     setClicked(false)
     setClickDelete(false)
+    
   }
 
   return (

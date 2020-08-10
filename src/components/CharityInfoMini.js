@@ -116,7 +116,8 @@ function CharityInfoMini({
     alert('charity has been deleted')
     setOpen(false)
     setClicked(false)
-    setClickDelete(true)    
+    setClickDelete(true)  
+    return
 
 }
 
