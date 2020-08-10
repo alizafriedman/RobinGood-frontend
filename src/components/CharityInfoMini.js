@@ -80,6 +80,9 @@ function CharityInfoMini({
 
   const addToProfile = async () => {
 // console.log(charity.ein)
+    if (!user) {
+      alert('please log in first');
+    }
     const token = await getTokenSilently();
     await fetch(`${api}/users/${user.userId}`, {
       method: "PATCH",

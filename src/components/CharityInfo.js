@@ -77,6 +77,9 @@ function CharityInfo( {char}) {
   };
 
   const test = async () => {
+    if (!user) {
+      alert('please log in first');
+    }
     setOpen(true)
 
     const token = await getTokenSilently();
