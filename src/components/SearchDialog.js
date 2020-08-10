@@ -9,7 +9,6 @@ import DialogTitle from "@material-ui/core/DialogTitle";
 import { api } from "../config";
 import FullPageCharity from './FullPageCharity'
 import "../styles/searchDialog.css";
-import Loading from './Loading'
 function SearchDialog() {
     const [open, setOpen] = React.useState(false);
     const [ein, setEin] = React.useState()

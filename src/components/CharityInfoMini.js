@@ -82,6 +82,8 @@ function CharityInfoMini({
 // console.log(charity.ein)
     if (!user) {
       alert('please log in first');
+      setOpen(false)
+      return
     }
     const token = await getTokenSilently();
     await fetch(`${api}/users/${user.userId}`, {

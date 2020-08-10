@@ -79,6 +79,8 @@ function CharityInfo( {char}) {
   const test = async () => {
     if (!user) {
       alert('please log in first');
+      setOpen(false)
+      return
     }
     setOpen(true)
 

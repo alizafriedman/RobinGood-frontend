@@ -16,7 +16,6 @@ import FullPageGraph from './FullPageGraph'
 import { useAuth0 } from "../react-auth0-spa";
 import { api } from "../config";
 import "../styles/fullPageCharity.css";
-import Loading from './Loading'
 
 const useStyles = makeStyles((theme) => ({
   appBar: {
@@ -50,6 +49,11 @@ function FullPageCharity({char, closeDialog}) {
 
 
   const addToProfile = async () => {
+    if (!user) {
+      alert('please log in first');
+      setOpen(false)
+      return
+    }
     const token = await getTokenSilently();
 
     await fetch(`${api}/users/${user.userId}`, {
@@ -66,7 +70,6 @@ function FullPageCharity({char, closeDialog}) {
   }
     return (
       <div>
-        <Loading />
         <Dialog
           fullScreen
           open={open}

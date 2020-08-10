@@ -73,7 +73,12 @@ function HomeGraphInfo({ donate_link, website, ein, name, city, state, zip_code,
         setOpen(false);
     };
 
-    const test = async () => {
+  const test = async () => {
+    if (!user) {
+      alert('please log in first');
+      setOpen(false)
+      return
+    }
         const token = await getTokenSilently();
         await fetch(`${api}/users/${user.userId}`, {
             method: "PATCH",
@@ -116,6 +121,7 @@ function HomeGraphInfo({ donate_link, website, ein, name, city, state, zip_code,
                 <Typography>
                   {city}, {state}, {zip_code}
                 </Typography>
+                <Typography gutterBottom></Typography>
                 <Typography id="text">
                   click here to visit the website:
                 </Typography>
