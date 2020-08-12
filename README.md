@@ -11,20 +11,18 @@ Backend for app here: [RobinGood Backend](https://github.com/alizafriedman/Robin
 
 ## Documentation links
 - [Feature List](https://github.com/alizafriedman/RobinGood-backend/blob/master/documentation/features.md)
-- [Front End Routes**](need to do)
 - [Back End Routes](https://github.com/alizafriedman/RobinGood-backend/blob/master/documentation/backendRoutes.md)
-- [Schema**](need to do)
-- [Schema Image**](need to do)
+
 
 
 ## Screenshots
-* Search by term
+## Search by term
 ![search by term gif!](https://github.com/alizafriedman/RobinGood-backend/blob/master/documentation/images/captured%20(1).gif)
 
-* Search by EIN
+## Search by EIN
 ![search by ein gif](https://github.com/alizafriedman/RobinGood-backend/blob/master/documentation/images/captured%20(2).gif)
 
-* View important information
+## View important information
 ![info gif](https://github.com/alizafriedman/RobinGood-backend/blob/master/documentation/images/captured%20(4).gif)
 
 
