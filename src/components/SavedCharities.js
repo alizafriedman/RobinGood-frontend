@@ -79,7 +79,7 @@ function SavedCharities() {
   
   const handleClickOpen = () => {
     if (!user.userId) {
-      return alert("oops! something went wrong. Please refresh the page")
+      return alert("oops! something went wrong. Please add a charity and refresh the page")
     }
 
     fetchSaved();
