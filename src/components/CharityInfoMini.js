@@ -113,7 +113,7 @@ function CharityInfoMini({
         charity_id: charity.ein
       })
     });
-    alert('charity has been deleted')
+    alert('charity has been deleted. Please refresh if it still appears here')
     setOpen(false)
     setClicked(false)
     setClickDelete(true)  
