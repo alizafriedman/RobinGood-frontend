@@ -20,23 +20,15 @@ import MGraphs from './MGraphs'
 
 // import { Legend } from "@devexpress/dx-react-chart";
 
-const MiniGraph = ({
-  charity
-}) => {
-const [char, setChar] = useState();
- 
-  // if (!char) return null;
-  // console.log(charity)
-
+const MiniGraph = ({ charity }) => {
+  
   return (
     <Paper className="graph">
           <Chart
         data={charity.chart_data}
         className="chart"
         width="470"
-        height="640"
-        // resolveLabelOverlapping="stack"
-        
+        height="640"        
       >
         <ArgumentAxis />
         <ValueAxis  />

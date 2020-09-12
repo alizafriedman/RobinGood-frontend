@@ -69,7 +69,7 @@ const useStyles = makeStyles((theme) => ({
 const NavBar = () => {
   const classes = useStyles();
   const { isAuthenticated, loginWithPopup, user } = useAuth0();
-   const { logout } = useAuth0();
+  const { logout } = useAuth0();
 
   return (
     <div className={classes.root}>
@@ -107,7 +107,7 @@ const NavBar = () => {
               Log in
             </Button>
           )}
-          )}
+          )
           {isAuthenticated && (
             <Button style={{ color: "primary" }}
               onClick={() => logout()}>
