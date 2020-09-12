@@ -1,7 +1,5 @@
-// import * as React from "react";
 import React from "react";
 import "../styles/graph.css";
-
 import Paper from "@material-ui/core/Paper";
 import {
   Chart,
@@ -10,13 +8,17 @@ import {
   ArgumentAxis,
   ValueAxis,
 } from "@devexpress/dx-react-chart-material-ui";
-import { Palette } from "@devexpress/dx-react-chart";
 import { Animation } from "@devexpress/dx-react-chart";
 import CharityInfo from "./CharityInfo";
 import PopPagePics from './PopPagePics'
 
-const FullPageGraph = ({char}) => {
+
+//pop page graphs
+
+const FullPageGraph = ({ char }) => {
+  
   if (!char.chart_data) return null;
+  
   return (
     <Paper className="graph">
       <Chart data={char.chart_data} className="chart" width="650">

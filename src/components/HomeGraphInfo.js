@@ -1,5 +1,4 @@
-import React, { useEffect, setState, useState } from "react";
-import { Link, NavLink } from 'react-router-dom'
+import React from "react";
 import { withStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
 import Dialog from "@material-ui/core/Dialog";
@@ -9,13 +8,9 @@ import MuiDialogActions from "@material-ui/core/DialogActions";
 import IconButton from "@material-ui/core/IconButton";
 import CloseIcon from "@material-ui/icons/Close";
 import Typography from "@material-ui/core/Typography";
-import { fetchCharity } from '../services/charities'
 import { api } from "../config";
-import Home from './Home'
 import { useAuth0 } from "../react-auth0-spa";
 import "../styles/charityInfoMini.css";
-
-
 
 const styles = (theme) => ({
     root: {
@@ -29,6 +24,7 @@ const styles = (theme) => ({
         color: theme.palette.grey[500],
     },
 });
+
 
 const DialogTitle = withStyles(styles)((props) => {
     const { children, classes, onClose, ...other } = props;
@@ -48,6 +44,7 @@ const DialogTitle = withStyles(styles)((props) => {
     );
 });
 
+
 const DialogContent = withStyles((theme) => ({
     root: {
         padding: theme.spacing(2),
@@ -61,17 +58,30 @@ const DialogActions = withStyles((theme) => ({
     },
 }))(MuiDialogActions);
 
-function HomeGraphInfo({ donate_link, website, ein, name, city, state, zip_code, category }) {
-    const [open, setOpen] = React.useState(false);
-    const { user, getTokenSilently, token, loading } = useAuth0();
-    ;
 
-    const handleClickOpen = () => {
-        setOpen(true);
-    };
-    const handleClose = () => {
-        setOpen(false);
-    };
+
+function HomeGraphInfo({
+  donate_link,
+  website,
+  ein,
+  name,
+  city,
+  state,
+  zip_code,
+  category }) {
+  
+  const [open, setOpen] = React.useState(false);
+  const { user, getTokenSilently, token, loading } = useAuth0();
+    
+
+  const handleClickOpen = () => {
+      setOpen(true);
+  };
+  const handleClose = () => {
+      setOpen(false);
+  };
+
+  //patch charity EIN to user array + test ensured logged in
 
   const test = async () => {
     if (!user) {
@@ -79,24 +89,24 @@ function HomeGraphInfo({ donate_link, website, ein, name, city, state, zip_code,
       setOpen(false)
       return
     }
-        const token = await getTokenSilently();
-        await fetch(`${api}/users/${user.userId}`, {
-            method: "PATCH",
-            headers: {
-                Authorization: `Bearer ${token}`,
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-              charity_id: ein
-            })
-        });
-        setOpen(false)
 
-    }
+    const token = await getTokenSilently();
+    await fetch(`${api}/users/${user.userId}`, {
+      method: "PATCH",
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        charity_id: ein
+      })
+    });
+    setOpen(false)
+  };
+  
 
   return (
     <>
-     
       {!loading && (
         <>
           <div>

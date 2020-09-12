@@ -2,10 +2,6 @@ import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
 import Dialog from "@material-ui/core/Dialog";
-import ListItemText from "@material-ui/core/ListItemText";
-import ListItem from "@material-ui/core/ListItem";
-import List from "@material-ui/core/List";
-import Divider from "@material-ui/core/Divider";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import IconButton from "@material-ui/core/IconButton";
@@ -31,43 +27,40 @@ const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
 });
 
+
 function FullPageCharity({char, closeDialog}) {
   const classes = useStyles();
   const [open, setOpen] = React.useState(true);
   const { user, getTokenSilently, token } = useAuth0();
 
 
-  const handleClickOpen = () => {
-    setOpen(true);
-  };
-
   const handleClose = () => {
-      closeDialog(null)
-    
-    
+    closeDialog(null);
   };
 
-
+ //patch charity to user ein array
+  
   const addToProfile = async () => {
     if (!user) {
       alert('please log in first');
-      setOpen(false)
+      setOpen(false);
       return
     }
-    const token = await getTokenSilently();
 
+    const token = await getTokenSilently();
     await fetch(`${api}/users/${user.userId}`, {
       method: "PATCH",
       headers: {
         Authorization: `Bearer ${token}`,
         "Content-Type": "application/json",
       },
-      body:JSON.stringify({
+      body: JSON.stringify({
         charity_id: char.ein
       })
     });
-  setOpen(false)
-  }
+    setOpen(false)
+  };
+
     return (
       <div>
         <Dialog
@@ -98,6 +91,6 @@ function FullPageCharity({char, closeDialog}) {
         </Dialog>
       </div>
     );
-}
+};
 
 export default FullPageCharity;
