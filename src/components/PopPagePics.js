@@ -3,7 +3,6 @@ import { makeStyles } from "@material-ui/core/styles";
 import GridList from "@material-ui/core/GridList";
 import GridListTile from "@material-ui/core/GridListTile";
 import tileData2 from "./tileData2";
-import "../styles/popPage.css";
 
 const useStyles = makeStyles((theme) => ({
   root: {

@@ -11,7 +11,6 @@ import Slide from "@material-ui/core/Slide";
 import FullPageGraph from './FullPageGraph'
 import { useAuth0 } from "../react-auth0-spa";
 import { api } from "../config";
-import "../styles/fullPageCharity.css";
 
 const useStyles = makeStyles((theme) => ({
   appBar: {
