@@ -1,10 +1,4 @@
-
-// import heart from "/images/heart.jpg";
-// import text from "/images/text.jpg";
-// import hands from "/images/hands.jpg";
-// import love from "/images/love.jpg";
-// import girls from "/images/girls.jpg";
-// import baby from "/images/baby.jpg";
+//splash banner
 const tileData = [
   {
     img: "/images/heart.jpg",

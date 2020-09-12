@@ -1,19 +1,5 @@
 import React, { useEffect, useState } from "react";
 import "../styles/graph.css";
-import Paper from "@material-ui/core/Paper";
-import {
-  Chart,
-  BarSeries,
-  Title,
-  ArgumentAxis,
-  ValueAxis,
-} from "@devexpress/dx-react-chart-material-ui";
-import { Palette } from "@devexpress/dx-react-chart";
-import { Animation } from "@devexpress/dx-react-chart";
-import CharityInfoMini from "./CharityInfoMini";
-import { fetchCharity } from "../services/charities";
-import Home from "./Home";
-import MiniGraph from "./MiniGraph";
 import { api } from "../config";
 import UserSavedGraphs from './UserSavedGraphs'
 import { useAuth0 } from "../react-auth0-spa";
@@ -21,45 +7,24 @@ import querystring from "query-string";
  
 
 const UGraphs = ({ einArray }) => {
-    const [array, setArray] = useState([]);
-    let [ein, setEin] = React.useState()
-     const [fetched, setFetched] = useState(false);
-  const [loaded, setLoaded] = useState(false);
+  const [array, setArray] = useState([]);
   const [click, setClick] = React.useState(false)
-  const [clickDelete, setClickDelete] = React.useState(false)
-  // const [einArray, setEinArray] = React.useState();
-
-  const { user, getTokenSilently, token, loading } = useAuth0();
+  const { loading } = useAuth0();
 
 
-// console.log(einArray)
-// if (!loading) return null
+  //bulk load charity info for graphs from redis
 
-useEffect(()=>{
-  const loadCharities = async() =>{
-    // einArray.forEach(async (ein) => {
-    //     const res = await fetch(`${api}/charities/${ein}`);
-    //     if (!res.ok) throw new Error("couldnt load featured data");
-    //   const test = await res.json();
-    //   console.log(test)
-    //     setArray([...array, test]);
-    //     setFetched(true)
-    // })
-   let queryString = querystring.stringify({'eins': einArray}, {'arrayFormat': "bracket"})
-    const res = await fetch(`${api}/charities/bulk?${queryString}`)
-    // console.log(res)
-    const result = await res.json()
-    setArray(result.bulk_list)
-    setClick(true)
-  }
-  loadCharities()
-  // console.log(array);
-},[])
+  useEffect(()=>{
+    const loadCharities = async() =>{
+    let queryString = querystring.stringify({'eins': einArray}, {'arrayFormat': "bracket"})
+      const res = await fetch(`${api}/charities/bulk?${queryString}`)
+      const result = await res.json()
+      setArray(result.bulk_list)
+      setClick(true)
+    }
+    loadCharities()
+  },[])
 
-
-    
-
- 
     return (
       <>
         {!loading && (

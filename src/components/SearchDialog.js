@@ -25,7 +25,8 @@ function SearchDialog() {
     const handleSearchEin = async (e) => {
       setEin(e.target.value);
     };
-
+  
+    //fetch by EIN
     const fetchCharity = async () => {
      const res = await fetch(`${api}/charities/${ein}`, {
        method: "GET",
@@ -36,34 +37,35 @@ function SearchDialog() {
      
      if (!res.ok) throw new Error("couldnt load featured data");
       const test = await res.json();
-    //    console.log(test)
       setChar(test)
       
     };
-       const fetchCharityTerm = async () => {
-         const res = await fetch(`${api}/charities/search?term=${term}`, {
-           method: "GET",
-           headers: {
-             "Content-Type": "application/json",
-           },
-         });
+    //fetch by search term
+  const fetchCharityTerm = async () => {
+      const res = await fetch(`${api}/charities/search?term=${term}`, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
 
-         if (!res.ok) throw new Error("couldnt load featured data");
-         const charTerm = await res.json();
-            console.log(charTerm)
-         setSearch(charTerm[0]);
-       };
-    
-    const handleCloseEin = () => {
-      setOpen(false);
-       fetchCharity();
+      if (!res.ok) throw new Error("couldnt load featured data");
+      const charTerm = await res.json();
+        console.log(charTerm)
+      setSearch(charTerm[0]);
     };
     
-     const handleCloseTerm = () => {
-       setOpen(false);
-       fetchCharityTerm();
-     };
   
+  const handleCloseEin = () => {
+    setOpen(false);
+      fetchCharity();
+  };
+  
+  const handleCloseTerm = () => {
+    setOpen(false);
+    fetchCharityTerm();
+  };
+
   const handleClickOpen = () => {
     setOpen(true);
   };

@@ -57,7 +57,6 @@ const useStyles = makeStyles((theme) => ({
   },
   inputInput: {
     padding: theme.spacing(1, 1, 1, 0),
-    // vertical padding + font size from searchIcon
     paddingLeft: `calc(1em + ${theme.spacing(4)}px)`,
     transition: theme.transitions.create("width"),
     width: "100%",
@@ -93,7 +92,6 @@ const NavBar = () => {
                 >
                   RobinGood
                 </Button>
-                {/* <img src="/utils/robinhoodLogo.png" className='logo' /> */}
               </Link>
             </div>
           </Typography>
@@ -109,21 +107,6 @@ const NavBar = () => {
               Log in
             </Button>
           )}
-
-          {/* {isAuthenticated && (
-            <span> */}
-              {/* <Link to="/">
-                <Button style={{ color: "#e8eaf6" }}>Home</Button>
-              </Link>
-              &nbsp; */}
-              {/* <Link to={"/profile"}>
-                <Button
-                  style={{ color: "primary", padding: "5px", minWidth: 0 }}
-                >
-                  <AccountCircleIcon />
-                </Button>
-              </Link>
-            </span> */}
           )}
           {isAuthenticated && (
             <Button style={{ color: "primary" }}

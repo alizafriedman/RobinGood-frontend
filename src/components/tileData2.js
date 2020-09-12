@@ -1,10 +1,4 @@
-// import jar from "/images/jar.jpg";
-// import plant from "/images/plant.jpg";
-// import piggy from "/images/piggy.jpg";
-// import change from "/images/change.jpg";
-// import money from "/images/money.jpg";
-// import nickel from "/images/nickel.jpg";
-
+//search popup banner
 const tileData2 = [
   {
     img: "/images/jar.jpg",
