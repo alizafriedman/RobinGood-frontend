@@ -61,10 +61,11 @@ const DialogActions = withStyles((theme) => ({
   },
 }))(MuiDialogActions);
 
+
 function CharityInfo( {char}) {
   const [open, setOpen] = React.useState(false);
-  const [clicked, setClicked] = React.useState(false)
-  const [clickDelete, setClickDelete] = React.useState(false)
+  const [clicked, setClicked] = React.useState(false);
+  const [clickDelete, setClickDelete] = React.useState(false);
   const { user, getTokenSilently, token } = useAuth0();
 
   
@@ -76,16 +77,17 @@ function CharityInfo( {char}) {
     setOpen(false);
   };
 
+  //test Auth0 logged user in first
   const test = async () => {
     if (!user) {
       alert('please log in first');
       setOpen(false)
       return
     }
+
     setOpen(true)
 
     const token = await getTokenSilently();
-    // console.log(user)
     await fetch(`${api}/users/${user.userId}`, {
       method: "PATCH",
       headers: {
@@ -99,8 +101,9 @@ function CharityInfo( {char}) {
     setOpen(false)
     setClicked(true)
     setClickDelete(true)
-
   }
+
+  //delete ein from user array
 
   const deleteFromProfile = async () => {
     const token = await getTokenSilently();
@@ -117,8 +120,7 @@ function CharityInfo( {char}) {
     setOpen(false)
     setClicked(false)
     setClickDelete(false)
-    
-  }
+  };
 
   return (
     <div>

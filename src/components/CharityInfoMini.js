@@ -1,5 +1,4 @@
-import React, { useEffect, setState, useState } from "react";
-import { Link, NavLink } from "react-router-dom";
+import React from "react";
 import { withStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
 import Dialog from "@material-ui/core/Dialog";
@@ -9,7 +8,6 @@ import MuiDialogActions from "@material-ui/core/DialogActions";
 import IconButton from "@material-ui/core/IconButton";
 import CloseIcon from "@material-ui/icons/Close";
 import Typography from "@material-ui/core/Typography";
-import { fetchCharity } from "../services/charities";
 import { api } from "../config";
 import Home from "./Home";
 import { useAuth0 } from "../react-auth0-spa";
@@ -60,15 +58,12 @@ const DialogActions = withStyles((theme) => ({
   },
 }))(MuiDialogActions);
 
-function CharityInfoMini({
-  charity
-}) {
-  const [open, setOpen] = React.useState(false);
-  const [clicked, setClicked] = React.useState(true)
-  const [clickDelete, setClickDelete] = React.useState(false)
-  const { user, getTokenSilently, token } = useAuth0();
-  const [einArray, setEinArray] = React.useState([]);
 
+function CharityInfoMini({ charity }) {
+  const [open, setOpen] = React.useState(false);
+  const [clicked, setClicked] = React.useState(true);
+  const [clickDelete, setClickDelete] = React.useState(false);
+  const { user, getTokenSilently, token } = useAuth0();
 
 
   const handleClickOpen = () => {
@@ -78,8 +73,8 @@ function CharityInfoMini({
     setOpen(false);
   };
 
+
   const addToProfile = async () => {
-// console.log(charity.ein)
     if (!user) {
       alert('please log in first');
       setOpen(false)
@@ -101,6 +96,8 @@ function CharityInfoMini({
     setClickDelete(true)
   }
 
+  //delete ein from user array
+
   const deleteFromProfile = async () => {
     const token = await getTokenSilently();
     await fetch(`${api}/users/${user.userId}`, {
@@ -116,10 +113,9 @@ function CharityInfoMini({
     alert('charity has been deleted. Please refresh if it still appears here')
     setOpen(false)
     setClicked(false)
-    setClickDelete(true)  
-    return
-
-}
+    setClickDelete(true)
+    return;
+  };
 
   return (
     <div>
@@ -160,9 +156,6 @@ function CharityInfoMini({
               Delete Charity
             </Button>
           )}
-
-          
-
           <Button autoFocus onClick={handleClose} color="secondary">
             Close
           </Button>
