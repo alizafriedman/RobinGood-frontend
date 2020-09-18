@@ -95,7 +95,7 @@ function CharityInfoMini({ charity, fetchSaved }) {
     setOpen(false)
     setClicked(true)
     setClickDelete(true)
-    fetchSaved()
+    // fetchSaved()
   }
 
   //delete ein from user array
