@@ -9,7 +9,6 @@ import IconButton from "@material-ui/core/IconButton";
 import CloseIcon from "@material-ui/icons/Close";
 import Typography from "@material-ui/core/Typography";
 import { api } from "../config";
-import Home from "./Home";
 import { useAuth0 } from "../react-auth0-spa";
 import "../styles/charityInfoMini.css";
 
@@ -63,7 +62,7 @@ function CharityInfoMini({ charity, fetchSaved }) {
   const [open, setOpen] = React.useState(false);
   const [clicked, setClicked] = React.useState(true);
   const [clickDelete, setClickDelete] = React.useState(false);
-  const { user, getTokenSilently, token } = useAuth0();
+  const { user, getTokenSilently } = useAuth0();
 
 
   const handleClickOpen = () => {
@@ -80,6 +79,7 @@ function CharityInfoMini({ charity, fetchSaved }) {
       setOpen(false)
       return;
     }
+    
     const token = await getTokenSilently();
       await fetch(`${api}/users/${user.userId}`, {
       method: "PATCH",
@@ -95,6 +95,7 @@ function CharityInfoMini({ charity, fetchSaved }) {
     setOpen(false)
     setClicked(true)
     setClickDelete(true)
+    fetchSaved()
   }
 
   //delete ein from user array

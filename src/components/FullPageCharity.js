@@ -30,7 +30,7 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 function FullPageCharity({char, closeDialog}) {
   const classes = useStyles();
   const [open, setOpen] = React.useState(true);
-  const { user, getTokenSilently, token } = useAuth0();
+  const { user, getTokenSilently } = useAuth0();
 
 
   const handleClose = () => {

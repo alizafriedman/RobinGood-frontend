@@ -73,7 +73,7 @@ function HomeGraphInfo({
   const [open, setOpen] = React.useState(false);
   const [clicked, setClicked] = React.useState(false);
   const [clickDelete, setClickDelete] = React.useState(false);
-  const { user, getTokenSilently, token, loading } = useAuth0();
+  const { user, getTokenSilently, loading } = useAuth0();
 
     
 

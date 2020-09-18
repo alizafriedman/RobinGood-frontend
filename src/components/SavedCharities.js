@@ -31,10 +31,9 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 function SavedCharities() {
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
-  const { user, getTokenSilently, token, isAuthenticated, loading } = useAuth0();
+  const { user, getTokenSilently, loading } = useAuth0();
   const [einArray, setEinArray] = React.useState([]);
   const [loaded, setLoaded] = useState(false);
-  const [test, setTest] = React.useState(user)
 
 
 //get user saved charities

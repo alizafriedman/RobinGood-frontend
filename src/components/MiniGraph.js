@@ -1,5 +1,4 @@
-// import * as React from "react";
-import React, {useEffect, useState} from "react";
+import React from "react";
 import "../styles/miniGraph.css";
 import Paper from "@material-ui/core/Paper";
 import {
@@ -8,15 +7,9 @@ import {
   Title,
   ArgumentAxis,
   ValueAxis,
-  SeriesTemplate,
-  CommonSeriesSettings
 } from "@devexpress/dx-react-chart-material-ui";
-import { Palette } from "@devexpress/dx-react-chart";
 import { Animation } from "@devexpress/dx-react-chart";
 import CharityInfo from "./CharityInfo";
-import { fetchCharity } from '../services/charities'
-import Home from './Home'
-import MGraphs from './MGraphs'
 
 // import { Legend } from "@devexpress/dx-react-chart";
 

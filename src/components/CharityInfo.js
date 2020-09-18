@@ -1,5 +1,4 @@
-import React, {useEffect, setState, useState} from "react";
-import {Link, NavLink} from 'react-router-dom'
+import React from "react";
 import { withStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
 import Dialog from "@material-ui/core/Dialog";
@@ -9,9 +8,7 @@ import MuiDialogActions from "@material-ui/core/DialogActions";
 import IconButton from "@material-ui/core/IconButton";
 import CloseIcon from "@material-ui/icons/Close";
 import Typography from "@material-ui/core/Typography";
-import { fetchCharity } from '../services/charities'
 import { api } from "../config";
-import Home from './Home'
 import { useAuth0 } from "../react-auth0-spa";
 import "../styles/charityInfoMini.css";
 
@@ -66,7 +63,7 @@ function CharityInfo( {char}) {
   const [open, setOpen] = React.useState(false);
   const [clicked, setClicked] = React.useState(false);
   const [clickDelete, setClickDelete] = React.useState(false);
-  const { user, getTokenSilently, token } = useAuth0();
+  const { user, getTokenSilently } = useAuth0();
 
   
   const handleClickOpen = () => {

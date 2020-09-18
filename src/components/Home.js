@@ -9,7 +9,7 @@ import DemoCard from './DemoCard'
 
 
 const Home = () => {
-  const { user, loading, getTokenSilently, isAuthenticated } = useAuth0();
+  const { user, loading, isAuthenticated } = useAuth0();
   const [featured, setFeatured] = useState();
   const [fetch, setFetched] = useState(false)
   
