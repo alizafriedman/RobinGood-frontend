@@ -91,8 +91,6 @@ function CharityInfoMini({ charity, fetchSaved }) {
         charity_id: charity.ein
       })
       });
-    if (!res.ok) throw new Error("couldnt load featured data");
-
     alert('Charity has been successfully added and will appear in your saved charities.')
     setOpen(false)
     setClicked(true)
