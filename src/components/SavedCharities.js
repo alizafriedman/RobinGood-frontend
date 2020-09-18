@@ -35,12 +35,11 @@ function SavedCharities() {
   const [einArray, setEinArray] = React.useState([]);
   const [loaded, setLoaded] = useState(false);
   const [test, setTest] = React.useState(user)
-debugger
+
 
 //get user saved charities
 
   const fetchSaved = async () => {
-  debugger
   const token = await getTokenSilently();
     const res = await fetch(`${api}/users/${user.userId}`, {
       method: "GET",
@@ -52,7 +51,6 @@ debugger
 
   if (!res.ok) throw new Error("couldnt load featured data");
     const fetchResult = await res.json();
-    debugger
   setEinArray(fetchResult.charity);
   
 };

@@ -16,7 +16,6 @@ const UGraphs = ({ einArray, fetchSaved }) => {
 
   useEffect(()=>{
     const loadCharities = async () => {
-      debugger
     let queryString = querystring.stringify({'eins': einArray}, {'arrayFormat': "bracket"})
       const res = await fetch(`${api}/charities/bulk?${queryString}`)
       const result = await res.json()
@@ -24,7 +23,7 @@ const UGraphs = ({ einArray, fetchSaved }) => {
       setClick(true)
     }
     loadCharities()
-  },[einArray]) //have use effect rerender whats left in array --- q is what is left by this pass
+  },[einArray]) //have use effect rerender immediately with rest of EINs
 
     return (
       <>

@@ -78,7 +78,7 @@ function CharityInfoMini({ charity, fetchSaved }) {
     if (!user) {
       alert('please log in first');
       setOpen(false)
-      return
+      return;
     }
     const token = await getTokenSilently();
       await fetch(`${api}/users/${user.userId}`, {
@@ -90,7 +90,8 @@ function CharityInfoMini({ charity, fetchSaved }) {
       body: JSON.stringify({
         charity_id: charity.ein
       })
-    });
+      });
+    alert('Charity has been successfully added and will appear in your saved charities.')
     setOpen(false)
     setClicked(true)
     setClickDelete(true)
@@ -111,7 +112,7 @@ function CharityInfoMini({ charity, fetchSaved }) {
       })
     });
 
-    alert('charity has been deleted. Please refresh if it still appears here')
+    alert('Charity has been deleted successfully. Please wait a moment')
     setOpen(false)
     setClicked(false)
     setClickDelete(true)
