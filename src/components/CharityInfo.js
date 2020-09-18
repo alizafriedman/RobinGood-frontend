@@ -98,11 +98,6 @@ function CharityInfo( {char}) {
         charity_id: char.ein
       })
     })
-    if (!fetchResult) {
-      console.log(fetchResult)
-      return alert('please add a charity first')
-
-    }
     alert("Charity has been successfully added and will appear in your saved charities.")
     setOpen(false)
     setClicked(true)
