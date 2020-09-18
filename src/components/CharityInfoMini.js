@@ -59,7 +59,7 @@ const DialogActions = withStyles((theme) => ({
 }))(MuiDialogActions);
 
 
-function CharityInfoMini({ charity }) {
+function CharityInfoMini({ charity, fetchSaved }) {
   const [open, setOpen] = React.useState(false);
   const [clicked, setClicked] = React.useState(true);
   const [clickDelete, setClickDelete] = React.useState(false);
@@ -81,7 +81,7 @@ function CharityInfoMini({ charity }) {
       return
     }
     const token = await getTokenSilently();
-    await fetch(`${api}/users/${user.userId}`, {
+      await fetch(`${api}/users/${user.userId}`, {
       method: "PATCH",
       headers: {
         Authorization: `Bearer ${token}`,
@@ -110,11 +110,13 @@ function CharityInfoMini({ charity }) {
         charity_id: charity.ein
       })
     });
+
     alert('charity has been deleted. Please refresh if it still appears here')
     setOpen(false)
     setClicked(false)
     setClickDelete(true)
-    return;
+    fetchSaved()
+
   };
 
   return (

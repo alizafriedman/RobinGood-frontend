@@ -10,7 +10,7 @@ import {
 } from "@devexpress/dx-react-chart-material-ui";
 import CharityInfoMini from "./CharityInfoMini";
 
-const UserSavedGraphs = ({ charity }) => {
+const UserSavedGraphs = ({ charity, fetchSaved }) => {
 
   return (
     <Paper className="saved">
@@ -28,7 +28,7 @@ const UserSavedGraphs = ({ charity }) => {
 
         <Title text={charity.name} color="#5785C2" />
       </Chart>
-      <CharityInfoMini charity={charity} />
+      <CharityInfoMini charity={charity} fetchSaved={fetchSaved} />
     </Paper>
   );
 };

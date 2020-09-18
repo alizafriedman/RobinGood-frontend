@@ -6,7 +6,7 @@ import { useAuth0 } from "../react-auth0-spa";
 import querystring from "query-string";
  
 
-const UGraphs = ({ einArray }) => {
+const UGraphs = ({ einArray, fetchSaved }) => {
   const [array, setArray] = useState([]);
   const [click, setClick] = React.useState(false)
   const { loading } = useAuth0();
@@ -15,7 +15,8 @@ const UGraphs = ({ einArray }) => {
   //bulk load charity info for graphs from redis
 
   useEffect(()=>{
-    const loadCharities = async() =>{
+    const loadCharities = async () => {
+      debugger
     let queryString = querystring.stringify({'eins': einArray}, {'arrayFormat': "bracket"})
       const res = await fetch(`${api}/charities/bulk?${queryString}`)
       const result = await res.json()
@@ -23,14 +24,14 @@ const UGraphs = ({ einArray }) => {
       setClick(true)
     }
     loadCharities()
-  },[])
+  },[einArray]) //have use effect rerender whats left in array --- q is what is left by this pass
 
     return (
       <>
         {!loading && (
           <>
             {array.map((charity) => {
-              return <UserSavedGraphs charity={charity} key={charity.ein} />;
+              return <UserSavedGraphs charity={charity} key={charity.ein} fetchSaved={fetchSaved}/>;
             })}
           </>
         )}

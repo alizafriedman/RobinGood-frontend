@@ -39,4 +39,4 @@ function HomeImage() {
 }
 
 
-export default HomeImage
+export default HomeImage;
