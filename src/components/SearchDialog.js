@@ -51,19 +51,20 @@ function SearchDialog() {
 
       if (!res.ok) throw new Error("couldnt load featured data");
       const charTerm = await res.json();
-        console.log(charTerm)
       setSearch(charTerm[0]);
     };
     
   
   const handleCloseEin = () => {
     setOpen(false);
-      fetchCharity();
+    fetchCharity();
+    setEin('');
   };
   
   const handleCloseTerm = () => {
     setOpen(false);
     fetchCharityTerm();
+    setTerm('');
   };
 
   const handleClickOpen = () => {
