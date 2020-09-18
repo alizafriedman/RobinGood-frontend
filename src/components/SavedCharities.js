@@ -51,6 +51,9 @@ function SavedCharities() {
 
   if (!res.ok) throw new Error("couldnt load featured data");
     const fetchResult = await res.json();
+    if (!fetchResult) {
+      return alert('please add a charity first')
+    }
   setEinArray(fetchResult.charity);
   
 };

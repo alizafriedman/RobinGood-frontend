@@ -71,7 +71,10 @@ function HomeGraphInfo({
   category }) {
   
   const [open, setOpen] = React.useState(false);
+  const [clicked, setClicked] = React.useState(false);
+  const [clickDelete, setClickDelete] = React.useState(false);
   const { user, getTokenSilently, token, loading } = useAuth0();
+
     
 
   const handleClickOpen = () => {
@@ -101,7 +104,11 @@ function HomeGraphInfo({
         charity_id: ein
       })
     });
+    alert("Charity has been successfully added and will appear in your saved charities.")
     setOpen(false)
+    setClicked(true)
+    setClickDelete(true)
+  
   };
   
 
