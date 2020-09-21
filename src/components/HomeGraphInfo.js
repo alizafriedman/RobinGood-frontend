@@ -104,6 +104,7 @@ function HomeGraphInfo({
         charity_id: ein
       })
     });
+
     alert("Charity has been successfully added and will appear in your saved charities.")
     setOpen(false)
     setClicked(true)
