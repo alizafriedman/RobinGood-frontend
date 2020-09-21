@@ -68,6 +68,7 @@ function SavedCharities() {
   if (!user.userId) {
     return alert("oops! something went wrong. Please add a charity and refresh the page")
   }
+    
 
   fetchSaved();
   setOpen(true);
@@ -112,9 +113,10 @@ function SavedCharities() {
                 </Typography>
                 </Toolbar>
               </AppBar>
-              <div className="saved" >
-              {einArray.length > 0 &&
-                  <UGraphs einArray={einArray} fetchSaved={fetchSaved} />}
+              <div className="saved" >  
+              {
+                  <UGraphs einArray={einArray} fetchSaved={fetchSaved} />
+                }
               </div>
             </Dialog>
           </div>
