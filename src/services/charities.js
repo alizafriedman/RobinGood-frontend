@@ -8,7 +8,7 @@ export const fetchFeaturedCharity = async () => {
       "Content-Type": "application/json",
     },
   });
-  if (!res.ok) throw new Error('couldnt load featured data');
+  if (!res.ok) throw new Error('couldn"t load featured data');
     return await res.json();
 };
 
@@ -20,7 +20,7 @@ export const fetchCharity = async (charity_id) => {
         "Content-Type": "application/json",
       },
     });
-    if (!res.ok) throw new Error("couldnt load featured data");
+    if (!res.ok) throw new Error("couldn't load featured data");
     return await res.json();
 }
 
