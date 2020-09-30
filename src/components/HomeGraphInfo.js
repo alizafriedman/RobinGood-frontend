@@ -115,8 +115,8 @@ function HomeGraphInfo({
 
   return (
     <>
-      {!loading && (
-        <>
+      {/* {!loading && (
+        <> */}
           <div>
             <Button
               variant="outlined"
@@ -162,8 +162,8 @@ function HomeGraphInfo({
               </DialogActions>
             </Dialog>
           </div>
-        </>
-      )}
+        {/* </>
+      )} */}
     </>
   );
 }

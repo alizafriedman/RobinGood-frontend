@@ -43,9 +43,9 @@ export const Auth0Provider = ({
       if (isAuthenticated) {
 
         const user = await auth0FromHook.getUser();
-        // console.log(user)
+        
         let token = await auth0FromHook.getTokenSilently();
-        // console.log(token)
+      
         const res = await fetch(`${api}/users`, {
           method: "POST",
           body: JSON.stringify({ nickname: user.nickname, email: user.email }),
@@ -54,16 +54,18 @@ export const Auth0Provider = ({
             Authorization: `Bearer ${token}`,
           },
         });
+
         //fetch path on user on the backend
         const response = await res.json();
+        
         setUser({ ...user, userId: response.userId });
+        
       }
-
       setLoading(false);
     };
     initAuth0();
     // eslint-disable-next-line
-  }, [isAuthenticated]);
+  }, [isAuthenticated, loading]);
 
   const loginWithPopup = async (params = {}) => {
     setPopupOpen(true);
@@ -71,14 +73,17 @@ export const Auth0Provider = ({
       await auth0Client.loginWithPopup(params);
     } catch (error) {
       console.error(error);
-    } finally {
+    } 
+    finally {
       setPopupOpen(false);
     }
+
+
     const user = await auth0Client.getUser();
     setUser(user);
-    
     localStorage.setItem('user', user)
     setIsAuthenticated(true);
+    
   };
 
   const handleRedirectCallback = async () => {

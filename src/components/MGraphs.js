@@ -20,7 +20,7 @@ const MGraphs = () => {
             
         }
         graphs()
-    },[])
+    },[loading])
 
     return (
       <>

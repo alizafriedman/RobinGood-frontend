@@ -40,24 +40,25 @@ function SavedCharities() {
 
   const fetchSaved = async () => {
   const token = await getTokenSilently();
-    const res = await fetch(`${api}/users/${user.userId}`, {
+  const res = await fetch(`${api}/users/${user.userId}`, {
       method: "GET",
       headers: {
-                Authorization: `Bearer ${token}`,
+        Authorization: `Bearer ${token}`,
         "Content-Type": "application/json",
       },
     });
 
-  if (!res.ok) throw new Error("couldnt load featured data");
+    if (!res.ok) throw new Error("couldnt load featured data");
+
     const fetchResult = await res.json();
+
     if (!fetchResult) {
-      console.log(fetchResult)
       return alert('please add a charity first')
-      
     }
-  setEinArray(fetchResult.charity);
+
+    setEinArray(fetchResult.charity);
   
-};
+  };
   
 
 
@@ -66,7 +67,7 @@ function SavedCharities() {
   
   // safety if Auth0 loads incorrectly
   if (!user.userId) {
-    return alert("oops! something went wrong. Please add a charity and refresh the page")
+    return alert("oops! something went wrong. Please refresh the page and add a charity")
   }
     
 
@@ -82,8 +83,8 @@ function SavedCharities() {
   
   return (
     <>
-      {!loading && (
-        <>
+      {/* {!loading && (
+        <> */}
           <div>
             <Button color="secondary" onClick={handleClickOpen}>
               View Saved Charities
@@ -120,8 +121,8 @@ function SavedCharities() {
               </div>
             </Dialog>
           </div>
-        </>
-      )}
+        {/* </>
+      )} */}
     </>
   );
   

@@ -25,7 +25,7 @@ const Home = () => {
         console.error(error);
       }
     })();
-  }, [user, isAuthenticated]);
+  }, []);
  
   
   if (!featured) return null;

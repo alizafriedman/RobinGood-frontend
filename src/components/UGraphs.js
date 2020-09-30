@@ -9,7 +9,7 @@ import querystring from "query-string";
 const UGraphs = ({ einArray, fetchSaved }) => {
   const [array, setArray] = useState([]);
   const [click, setClick] = React.useState(false)
-  const { loading } = useAuth0();
+  const { loading} = useAuth0();
 
 
   //bulk load charity info for graphs from redis
