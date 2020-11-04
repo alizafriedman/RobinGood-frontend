@@ -47,7 +47,7 @@ export const Auth0Provider = ({
         let token = await auth0FromHook.getTokenSilently();
         console.log(token)
         const res = await fetch(`${api}/users`, {
-          method: "",
+          method: "POST",
           body: JSON.stringify({ nickname: user.nickname, email: user.email }),
           headers: {
             "Content-Type": "application/json",
